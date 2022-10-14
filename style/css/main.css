@@ -26,20 +26,15 @@ img {
   height: auto;
 }
 
-body {
+html, body {
   background-color: #F7F7F7;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 main {
   flex-grow: 1;
-}
-
-.main {
-  width: 100%;
-  min-height: 50%;
 }
 
 button {
@@ -74,6 +69,56 @@ button:hover {
 .menu .menu-items .selected {
   background-color: #c2c2c2;
   border-bottom: black 2px solid;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  min-height: 100%;
+  border: 2px solid lightgrey;
+  margin: 5px;
+}
+
+.cards {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.cards .card {
+  margin: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 300px;
+  height: auto;
+}
+.cards .card .card-image {
+  width: 300px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.cards .card .card-content {
+  padding: 7px;
+  width: 100%;
+}
+.cards .card .actions {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+}
+.cards .card .actions button {
+  padding: 7px 20px;
+  border-radius: 0;
+  width: 100%;
+}
+.cards .card .actions .action-edit {
+  background-color: #c2c2c2;
+}
+.cards .card .actions .action-edit:hover {
+  background-color: #b9b9b9;
 }
 
 .icon {

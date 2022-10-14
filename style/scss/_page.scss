@@ -1,0 +1,49 @@
+.content{
+  width:100%;
+  height: 100%;
+
+}
+.main{
+  min-height: 100%;
+  border: 2px solid lightgrey;
+  margin: 5px;
+}
+.cards{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  .card{
+    margin: 5px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
+    .card-image{
+      width: 300px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .card-content{
+      padding:7px;
+      width: 100%;
+    }
+    .actions{
+      margin-top: 5px;
+      width: 100%;
+      display: flex;
+      button{
+        padding: 7px 20px;
+
+        border-radius: 0;
+        width: 100%;
+      }
+      .action-edit{
+        background-color: $grey-color;
+        &:hover{
+          background-color: adjust-color($grey-color, $blackness: 5%);
+        }
+      }
+    }
+  }
+}

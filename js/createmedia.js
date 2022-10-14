@@ -10,42 +10,65 @@ let createdMedia;
 let title
 let year
 let cover
+let artist
 
 
 document.getElementById("create").addEventListener("click", function () {
+
     type = document.getElementById("med").value;
-    title = prompt("Enter the title");
-    cover = prompt("Enter the location of the img of the cover");
+    document.getElementById("popup").innerHTML = "<label for=\"tit\">Title:</label>\n" +
+        "    <input id=\"tit\" type=\"text\"><label for=\"tit\">Cover URL:</label>\n" +
+        "    <input id=\"cov\" type=\"text\"><label for=\"RY\">Release year:</label>\n" +
+        "    <input id=\"RY\" type=\"text\">";
 
     switch (type) {
         case "Boo":
-            let author = prompt("Enter the author of the book");
-            year = prompt("Enter the release year of the book");
-            createdMedia = new Book(title, author, year, cover);
-            document.getElementById("medias").innerHTML += '<div class="media"><p>Book :' + createdMedia.title + createdMedia.author + createdMedia.releaseYear + '</p><img src="' + cover + '"></div>';
+            document.getElementById("popup").innerHTML += "<label for=\"ART\">Autheur:</label>\n" +
+                "    <input id=\"ART\" type=\"text\">";
             break;
 
         case "Mov":
-            year = prompt("Enter the release year of the movie");
-            let realisator = prompt("Enter the director of the movie");
-            createdMedia = new Movie(title, realisator, year, cover);
-            document.getElementById("medias").innerHTML += '<div class="media"><p>Movie : ' + createdMedia.title + createdMedia.director + createdMedia.releaseYear + '</p><img src="' + cover + '"></div>';
+            document.getElementById("popup").innerHTML += "<label for=\"ART\">Director:</label>\n" +
+                "    <input id=\"ART\" type=\"text\">";
             break;
 
         case "Albm":
-            year = prompt("Enter the release year of the album");
-            let artist = prompt("Enter the artist of the album");
-            createdMedia = new Album(title, artist, year, cover);
-            document.getElementById("medias").innerHTML += '<div class="media"><p>Album : ' + createdMedia.title + createdMedia.artist + createdMedia.releaseYear + '</p><img src="' + cover + '"></div>';
+            document.getElementById("popup").innerHTML += "<label for=\"ART\">Artiste:</label>\n" +
+                "    <input id=\"ART\" type=\"text\">";
             break;
 
         case "Gam":
-            year = prompt("Enter the release year of the game");
-            let studio = prompt("Enter the studio of the game");
-            createdMedia = new Game(title, studio, year, cover);
-            document.getElementById("medias").innerHTML += '<div class="media"><p>Game ! ' + createdMedia.title + createdMedia._editor + createdMedia.releaseYear + '</p><img src="' + cover + '"></div>';
+            document.getElementById("popup").innerHTML += "<label for=\"ART\">Studio:</label>\n" +
+                "    <input id=\"ART\" type=\"text\">";
             break;
     }
+
+    document.getElementById("popup").innerHTML += "<button id=\"createMedia\">Create</button>";
+
+    document.getElementById("createMedia").addEventListener("click", function () {
+        title = document.getElementById("tit").value;
+        year = document.getElementById("RY").value;
+        cover = document.getElementById("cov").value;
+        artist = document.getElementById("ART").value;
+        switch (type) {
+            case "Boo":
+                createdMedia = new Book(title, year, cover, artist);
+                break;
+            case "Mov":
+                createdMedia = new Movie(title, year, cover, artist);
+                break;
+            case "Albm":
+                createdMedia = new Album(title, year, cover, artist);
+                break;
+            case "Gam":
+                createdMedia = new Game(title, year, cover, artist);
+                break;
+            default:
+                createdMedia = new Media(title, year, cover);
+        }
+
+        console.log(createdMedia);
+    });
 
 
 });

@@ -1,0 +1,30 @@
+.menu{
+  display: flex;
+  justify-content: space-between;
+
+  .menu-items{
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    border-bottom: grey 2px solid;
+
+    li{
+      padding:7px 20px;
+      }
+    .selected{
+      border-bottom:black 2px solid;
+    }
+    }
+  }
+
+
+.button-add{
+  background-color: #5555ff;
+  padding:7px 20px;
+  border-radius: 5px;
+  color:white;
+  &:hover{
+    background-color: #3333ff;
+  }
+
+}

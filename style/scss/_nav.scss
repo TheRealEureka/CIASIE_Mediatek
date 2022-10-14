@@ -12,24 +12,14 @@
       padding:7px 20px;
       cursor: pointer;
       &:hover{
-        background-color: #c2c2c2;
+        background-color: $grey-color;
       }
       }
     .selected{
-      background-color: #c2c2c2;
+      background-color: $grey-color;
       border-bottom:black 2px solid;
     }
     }
   }
 
 
-.button-add{
-  background-color: #5555ff;
-  padding:7px 20px;
-  border-radius: 5px;
-  color:white;
-  &:hover{
-    background-color: #3333ff;
-  }
-
-}

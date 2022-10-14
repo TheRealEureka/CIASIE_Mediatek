@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import 'vars';
 
 /* === GENERAL & RESET === */
 
@@ -43,6 +44,17 @@ main {
 .main{
   width: 100%;
   min-height: 50%;
+}
+button{
+  background-color: $primary-color;
+  padding:0 20px;
+  border-radius: 3px;
+  color:white;
+  text-align: center;
+  white-space: nowrap;
+  &:hover{
+    background-color: adjust-color($primary-color, $blackness: 5%);
+  }
 }
 
 @import 'nav';

@@ -8,14 +8,15 @@
 <body>
 <div class="content">
     <div class="menu">
-        <ul class="menu-items">
-            <li class="selected">All</li>
-            <li><span class="icon icon-music"></span> Albums</li>
-            <li><span class="icon icon-game"></span> Games</li>
-            <li><span class="icon icon-movie"></span> Movies</li>
+        <ul class="menu-items" id="nav_items">
+            <li class="selected" data-tab="all">All</li>
+            <li data-tab="albums"><span class="icon icon-music"  ></span> Albums</li>
+            <li data-tab="games"><span class="icon icon-game" ></span> Games</li>
+            <li data-tab="movies"><span class="icon icon-movie" ></span> Movies</li>
+            <li data-tab="movies"><span class="icon icon-book" ></span> Books</li>
         </ul>
         <div class="space"></div>
-        <button class="button-add" id="create">Add media</button>
+        <button class="button-add" id="open_popup">Add media</button>
 
     </div>
     <div class="main">
@@ -50,7 +51,24 @@
         </div>
     </div>
 </div>
-<script type="module" src="js/createmedia.js"></script>
+<div id="popup" class="popup hidden">
+    <div class="popup-content">
+        <div class="close" id="close_popup">X</div>
+        <div class="form-add-media">
+            <label for="med">Choose a media type:</label>
+            <select id="med" name="med">
+                <option value="Mov">Movie</option>
+                <option value="Gam">Game</option>
+                <option value="Boo">Book</option>
+                <option value="Albm">Album</option>
+            </select>
+            <button id="create">Create</button>
+        </div>
+
+    </div>
+
+</div>
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>

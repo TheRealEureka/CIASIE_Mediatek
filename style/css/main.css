@@ -159,15 +159,47 @@ button:hover {
 }
 .popup .popup-content .form-add-media {
   width: 100%;
+}
+.popup .popup-content .form-add-media .step {
   display: flex;
   flex-direction: column;
 }
-.popup .popup-content .form-add-media select {
+.popup .popup-content .form-add-media .step input, .popup .popup-content .form-add-media .step select {
   border: #c2c2c2 1px solid;
   margin: 20px 0;
 }
-.popup .popup-content .form-add-media select, .popup .popup-content .form-add-media button {
+.popup .popup-content .form-add-media .middle-step label {
+  font-weight: normal;
+  text-align: left;
+}
+.popup .popup-content .form-add-media .middle-step input {
+  max-width: 250px;
+  padding: 5px;
+}
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0;
+}
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back {
+  background-color: #c2c2c2;
+}
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back:hover {
+  background-color: #b9b9b9;
+}
+.popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button {
   padding: 10px 20px;
+}
+.popup .popup-content .form-add-media .middle-step p, .popup .popup-content .form-add-media .last-step p {
+  border-bottom: #c2c2c2 2px solid;
+  margin-bottom: 10px;
+}
+.popup .popup-content .form-add-media .hidden {
+  display: none;
 }
 
 .hidden {

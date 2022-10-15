@@ -55,14 +55,33 @@
     <div class="popup-content">
         <p class="close" id="close_popup">X</p>
         <div class="form-add-media">
-            <label for="med">Choose a media type:</label>
-            <select id="med" name="med">
-                <option value="Mov">Movie</option>
-                <option value="Gam">Game</option>
-                <option value="Boo">Book</option>
-                <option value="Albm">Album</option>
-            </select>
-            <button id="create">Create</button>
+            <div id="popup_step1" class="step first-step">
+                <label for="med">Choose a media type:</label>
+                <select id="med" name="med">
+                    <option value="Mov">Movie</option>
+                    <option value="Gam">Game</option>
+                    <option value="Boo">Book</option>
+                    <option value="Albm">Album</option>
+                </select>
+                <button id="create">Create -></button>
+            </div>
+            <div id="popup_step2" class="step middle-step hidden">
+                <p>Général</p>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Title">
+                <label for="release">Release date:</label>
+                <input type="date" id="release" name="release" placeholder="Release date">
+                <label for="image">Image URL :</label>
+                <input type="text" id="image" name="image" placeholder="Image URL">
+                <div class="popup_action_buttons">
+                    <button class="popup_back" data-step="2" id="popup_back"><- Back</button>
+                    <button class="popup_continue" data-step="2" id="popup_continue">Continue -></button>
+                </div>
+            </div>
+            <div id="popup_step3" class="step last-step hidden" >
+                <p>Specific</p>
+                <button class="popup_final" data-step="3" >Create</button>
+            </div>
         </div>
 
     </div>

@@ -50,6 +50,9 @@ document.getElementById('popup_continue').addEventListener('click', function() {
 document.getElementById('popup_back').addEventListener('click', function() {
     displayStep(1);
 });
+document.getElementById('popup_final_back').addEventListener('click', function() {
+    displayStep(2);
+});
 
 function displayStep(step){
     for(let i = 0; i < steps.length; i++){

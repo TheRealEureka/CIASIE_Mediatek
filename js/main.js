@@ -27,6 +27,8 @@ document.getElementById('close_popup').addEventListener('click', function(){
     togglePopup()
 });
 
+
+
 function togglePopup(){
     document.getElementById('popup').classList.toggle('hidden');
 }

@@ -23,7 +23,7 @@ document.getElementById("create").addEventListener("click", function () {
 
     switch (type) {
         case "Boo":
-            document.getElementById("popup").innerHTML += "<label for=\"ART\">Autheur:</label>\n" +
+            document.getElementById("popup").innerHTML += "<label for=\"ART\">Author:</label>\n" +
                 "    <input id=\"ART\" type=\"text\">";
             break;
 

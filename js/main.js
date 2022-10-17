@@ -68,6 +68,10 @@ document.getElementById('popup_final_back').addEventListener('click', function()
     displayStep(2);
 });
 
+document.getElementById('popup_final').addEventListener('click', function() {
+    //Create media
+});
+
 function displayStep(step){
     for(let i = 0; i < steps.length; i++){
         steps[i].classList.add('hidden');

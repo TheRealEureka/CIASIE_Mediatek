@@ -3,7 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>MONKEY MEDIATEK</title>
+    <link rel="stylesheet" href="style/css/main.css">
 </head>
 <body>
+<div class="content">
+    <div class="menu">
+        <ul class="menu-items" id="nav_items">
+            <li class="selected" data-tab="all">All</li>
+            <li data-tab="albums"><span class="icon icon-music"  ></span> Albums</li>
+            <li data-tab="games"><span class="icon icon-game" ></span> Games</li>
+            <li data-tab="movies"><span class="icon icon-movie" ></span> Movies</li>
+            <li data-tab="movies"><span class="icon icon-book" ></span> Books</li>
+        </ul>
+        <div class="space"></div>
+        <button class="button-add" id="open_popup">Add media</button>
+
+    </div>
+    <div class="main">
+        <div class="cards">
+
+            <div class="card">
+                <img class="card-image" src="https://www.fitsnews.com/wp-content/uploads/2019/07/GettyImages-1051446468-e1563402439758.jpg" alt="album">
+                    <div class="card-content">
+                        <h4><span class="icon icon-music"></span> Raton Master</h4>
+                        <small>Released 10/11/2002</small>
+                        <p>Ouga lamp ouga ouga lamp osvjkebsvksjsnvsd dsif sdbf esge sdgfjkb svfe</p>
+                    </div>
+                    <div class="actions">
+                        <button class="action-edit">Edit</button>
+                        <button class="action-remove">Remove</button>
+                    </div>
+            </div>
+
+            <div class="card">
+                <img class="card-image" src="https://www.fitsnews.com/wp-content/uploads/2019/07/GettyImages-1051446468-e1563402439758.jpg" alt="album">
+                    <div class="card-content">
+                        <h4><span class="icon icon-music"></span> Raton Master</h4>
+                        <small>Released 10/11/2002</small>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    </div>
+                    <div class="actions">
+                        <button class="action-edit">Edit</button>
+                        <button class="action-remove">Remove</button>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="popup" class="popup hidden">
+    <div class="popup-content">
+        <p class="close" id="close_popup">X</p>
+        <div class="form-add-media">
+            <div id="popup_step1" class="step first-step">
+                <label for="med">Choose a media type:</label>
+                <select id="med" name="med">
+                    <option value="Mov">Movie</option>
+                    <option value="Gam">Game</option>
+                    <option value="Boo">Book</option>
+                    <option value="Albm">Album</option>
+                </select>
+                <button id="create">Create -></button>
+            </div>
+            <div id="popup_step2" class="step middle-step hidden">
+                <p>Général</p>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Title">
+                <label for="release">Release date:</label>
+                <input type="date" id="release" name="release" placeholder="Release date">
+                <label for="image">Image URL :</label>
+                <input type="text" id="image" name="image" placeholder="Image URL">
+                <div class="popup_action_buttons">
+                    <button class="popup_back" data-step="2" id="popup_back"><- Back</button>
+                    <button class="popup_continue" data-step="2" id="popup_continue">Continue -></button>
+                </div>
+            </div>
+            <div id="popup_step3" class="step last-step hidden" >
+                <p>Specific</p>
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director" placeholder="Director">
+                <label for="actors">Actors:</label>
+                <input type="text" id="actors" name="actors" placeholder="Actors">
+                <label for="duration">Duration:</label>
+                <input type="text" id="duration" name="duration" placeholder="Duration">
+                <div class="popup_action_buttons">
+                    <button class="popup_back" data-step="3" id="popup_final_back"><- Back</button>
+                    <button class="popup_continue" data-step="3" id="popup_final">Continue -></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="module" src="js/main.js"></script>
+
 </body>
 </html>

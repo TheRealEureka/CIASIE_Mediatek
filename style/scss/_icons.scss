@@ -1,0 +1,20 @@
+.icon{
+width: 16px;
+height: 16px;
+display: inline-block;
+transform: translateY(10%);
+}
+
+.icon-music{
+  background: url("../icon/music.svg") 50% 50%  no-repeat;
+}
+.icon-game{
+  background: url("../icon/game.svg") 50% 50% no-repeat;
+
+}
+.icon-movie{
+  background: url("../icon/film.svg") 50% 50% no-repeat;
+}
+.icon-book{
+  background: url("../icon/book.svg") 50% 50% no-repeat;
+}

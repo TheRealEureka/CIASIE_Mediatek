@@ -14,6 +14,7 @@ for(let child of menu_item.children){
 }
 //Select tab
 function select (tab){
+
 console.log(tab);
 }
 
@@ -39,12 +40,25 @@ function togglePopup(){
 //Popup form
 let steps = document.getElementsByClassName('step');
 
+
+//Navigate through steps
 document.getElementById('create').addEventListener('click', function() {
     displayStep(2);
 });
 
 document.getElementById('popup_continue').addEventListener('click', function() {
-    displayStep(3);
+    let regex = new RegExp('^\s*$');
+    if(regex.test(document.getElementById('title').value)){
+        document.getElementById('title').style.border = "red 2px solid";
+        document.getElementById('title').addEventListener('click', function(){
+            document.getElementById('title').style.border = "#c2c2c2 1px solid";
+        });
+    }
+    else{
+        displayStep(3);
+        document.getElementById('title').style.border = "";
+    }
+
 });
 
 document.getElementById('popup_back').addEventListener('click', function() {
@@ -54,9 +68,41 @@ document.getElementById('popup_final_back').addEventListener('click', function()
     displayStep(2);
 });
 
+document.getElementById('popup_final').addEventListener('click', function() {
+    //Create media
+});
+
 function displayStep(step){
     for(let i = 0; i < steps.length; i++){
         steps[i].classList.add('hidden');
     }
     document.getElementById('popup_step' + step).classList.remove('hidden');
 }
+
+//Generate specific form for each media type
+let type = document.getElementById("med");
+type.addEventListener('change', function(){
+
+let label = "Author :";
+
+switch (type.value) {
+    case "Boo":
+       label = "Author :";
+        break;
+
+    case "Mov":
+        label = "Director :";
+        break;
+
+    case "Albm":
+        label = "Artist :";
+        break;
+
+    case "Gam":
+        label = "Studio :";
+        break;
+    }
+
+
+    document.getElementById("label_spec").innerText = label;
+});

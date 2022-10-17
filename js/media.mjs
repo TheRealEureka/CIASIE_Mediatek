@@ -2,12 +2,12 @@ class Media {
     constructor(title, release,  cover) {
         this._title = title;
         if(cover === "") {
-        this._cover = 'style/css/icon/img.png';
+        this._cover = 'style/icon/nopic.svg';
         }
         else{
             this._cover = cover;
         }
-        this._cover = cover;
+
         this._release = release;
     }
 

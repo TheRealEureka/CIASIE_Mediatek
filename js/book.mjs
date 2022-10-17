@@ -4,13 +4,15 @@ class Book extends Media {
     constructor(title, author, releaseYear, cover) {
         super(title, releaseYear, cover);
         this._author = author;
-
+        this._type = "books";
     }
 
     get author() {
         return this._author;
     }
-
+    get type(){
+        return this._type;
+    }
      html(){
         let obj = document.createElement("div");
         obj.classList.add("card");

@@ -4,10 +4,15 @@ class Movie extends Media {
     constructor(title, director, releaseYear, cover) {
         super(title, releaseYear, cover);
         this._director = director;
+        this._type = "movies";
     }
 
     get director() {
         return this._director;
+    }
+
+    get type(){
+        return this._type;
     }
      html(){
         let obj = document.createElement("div");

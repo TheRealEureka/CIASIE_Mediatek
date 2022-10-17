@@ -4,12 +4,15 @@ class Album extends Media {
     constructor(title, artist, releaseYear, cover) {
         super(title, releaseYear, cover);
         this._artist = artist;
+        this._type = "albums";
     }
 
     get artist() {
         return this._artist;
     }
-
+    get type(){
+        return this._type;
+    }
      html(){
         let obj = document.createElement("div");
         obj.classList.add("card");

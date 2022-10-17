@@ -11,8 +11,11 @@ class Book extends Media {
         return this._author;
     }
 
-    get html(){
-        return `<div class="card">
+     html(){
+        let obj = document.createElement("div");
+        obj.classList.add("card");
+
+        obj.innerHTML= `
                 <img class="card-image" draggable="false" src="${this.cover}" alt="album">
                     <div class="card-content">
                         <h4><span class="icon icon-music"></span> ${this.title}</h4>
@@ -22,8 +25,8 @@ class Book extends Media {
                     <div class="actions">
                         <button class="action-edit">Edit</button>
                         <button class="action-remove">Remove</button>
-                    </div>
-            </div>`;
+                    </div>`;
+        return obj;
     }
 }
 

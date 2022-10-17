@@ -35,18 +35,18 @@ export function displayByType(type) {
     display(type);
 }
 
-    function edit(media) {
+function edit(media) {
 
-    }
+}
 
-    function del(media) {
-        let index = tab.indexOf(media);
-        if (index >= 0) {
-            tab.splice(index, 1);
-            display();
-            save();
-        }
+function del(media) {
+    let index = tab.indexOf(media);
+    if (index >= 0) {
+        tab.splice(index, 1);
+        display();
+        save();
     }
+}
 
 
 //Save the list into local storage

@@ -13,44 +13,26 @@ export function addMedia(media) {
     save();
 }
 
-function display() {
+function display(type ="all") {
     document.getElementById("cards").innerHTML = "";
     tab.forEach(function (media) {
-        let med = media.html();
-        med.children[2].children[0].addEventListener("click", function () {
-            edit(media)
-            display();
-        });
-        med.children[2].children[1].addEventListener("click", function () {
-            del(media);
-            display();
-        });
-        document.getElementById("cards").appendChild(med);
+        if(media.type === type || type === "all") {
+            let med = media.html();
+            med.children[2].children[0].addEventListener("click", function () {
+                edit(media)
+                display();
+            });
+            med.children[2].children[1].addEventListener("click", function () {
+                del(media);
+                display();
+            });
+            document.getElementById("cards").appendChild(med);
+        }
     })
 }
 
 export function displayByType(type) {
-    document.getElementById("cards").innerHTML = "";
-    if (type === "all") {
-        display();
-    } else {
-        tab.forEach(function (media) {
-            console.log(media.type);
-            if (media.type === type) {
-                let med = media.html();
-                med.children[2].children[0].addEventListener("click", function () {
-                    edit(media)
-                    display();
-                });
-                med.children[2].children[1].addEventListener("click", function () {
-                    del(media);
-                    display();
-                });
-                document.getElementById("cards").appendChild(med);
-            }
-
-        })
-    }
+    display(type);
 }
 
     function edit(media) {

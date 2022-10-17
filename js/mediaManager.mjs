@@ -5,5 +5,8 @@ export function addMedia(media) {
 }
 
 export function display(){
-
+    let html = "";
+    tab.forEach(function (media) {
+        html += media.display();
+    })
 }

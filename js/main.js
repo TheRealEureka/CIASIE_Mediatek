@@ -3,6 +3,7 @@ import {Book} from "./book.mjs";
 import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
+import {addMedia} from "./mediaManager.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -36,10 +37,6 @@ document.getElementById('close_popup').addEventListener('click', function () {
     displayStep(1);
 });
 
-
-function togglePopup() {
-    document.getElementById('popup').classList.toggle('hidden');
-}
 
 
 //Popup form
@@ -82,19 +79,21 @@ document.getElementById('popup_final').addEventListener('click', function () {
     let obj;
     switch (type) {
         case "Boo":
-            obj = new Book(title, year, cover, artist);
+            obj = new Book(title, artist, year, cover);
             break;
         case "Mov":
-            obj = new Movie(title, year, cover, artist);
+            obj = new Movie(title, artist, year, cover);
             break;
         case "Albm":
-            obj = new Album(title, year, cover, artist);
+            obj = new Album(title,artist, year, cover);
             break;
         case "Gam":
-            obj = new Game(title, year, cover, artist);
+            obj = new Game(title, artist, year, cover);
             break;
-
     }
+    //reset fields
+    togglePopup();
+    addMedia(obj);
 });
 
 function displayStep(step) {
@@ -131,3 +130,15 @@ type.addEventListener('change', function () {
 
     document.getElementById("label_spec").innerText = label;
 });
+
+
+
+function togglePopup() {
+    document.getElementById('title').value = "";
+    document.getElementById('release').value = "";
+    document.getElementById('image').value = "";
+    document.getElementById('ART').value = "";
+    document.getElementById('med').value = "Mov";
+    displayStep(1);
+    document.getElementById('popup').classList.toggle('hidden');
+}

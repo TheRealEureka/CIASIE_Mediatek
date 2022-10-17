@@ -9,11 +9,11 @@ class Movie extends Media {
     get director() {
         return this._director;
     }
+     html(){
+        let obj = document.createElement("div");
+        obj.classList.add("card");
 
-
-
-    get html(){
-        return `<div class="card">
+        obj.innerHTML= `
                 <img class="card-image" draggable="false" src="${this.cover}" alt="album">
                     <div class="card-content">
                         <h4><span class="icon icon-music"></span> ${this.title}</h4>
@@ -23,8 +23,8 @@ class Movie extends Media {
                     <div class="actions">
                         <button class="action-edit">Edit</button>
                         <button class="action-remove">Remove</button>
-                    </div>
-            </div>`;
+                    </div>`;
+        return obj;
     }
 }
 

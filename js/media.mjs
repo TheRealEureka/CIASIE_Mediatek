@@ -5,11 +5,38 @@ class Media {
         this._cover = 'style/icon/nopic.svg';
         }
         else{
-            this._cover = cover;
+
+            this._checkIfImageExists(cover, (exists) => {
+                if (exists) {
+                    this._cover = cover;
+                } else {
+                    this._cover = 'style/icon/nopic.svg';
+                }
+            })
         }
 
         this._release = release;
     }
+// CHECK IF IMAGE EXISTS
+    _checkIfImageExists(url, callback) {
+        const img = new Image();
+        img.src = url;
+
+        if (img.complete) {
+            callback(true);
+        } else {
+             img.onload = () => {
+                callback(true);
+            };
+
+             img.onerror = () => {
+                callback(false);
+            };
+        }
+    }
+
+
+
 
     get title() {
         return this._title;

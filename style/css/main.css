@@ -121,13 +121,13 @@ button:hover {
 }
 .cards .card .actions .action-remove {
   border-radius: 0 0 5px 0;
+  background-color: red;
+}
+.cards .card .actions .action-remove:hover {
+  background-color: #cc0000;
 }
 .cards .card .actions .action-edit {
   border-radius: 0 0 0 5px;
-  background-color: #c2c2c2;
-}
-.cards .card .actions .action-edit:hover {
-  background-color: #b9b9b9;
 }
 
 .popup {
@@ -229,6 +229,14 @@ button:hover {
 
 .icon-book {
   background: url("../icon/book.svg") 50% 50% no-repeat;
+}
+
+.icon-trash {
+  background: url("../icon/trash.svg") 50% 50% no-repeat;
+}
+
+.icon-pencil {
+  background: url("../icon/edit.svg") 50% 50% no-repeat;
 }
 
 /*# sourceMappingURL=main.css.map */

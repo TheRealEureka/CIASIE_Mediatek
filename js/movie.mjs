@@ -26,8 +26,8 @@ class Movie extends Media {
                         <p>${this._director}</p>
                     </div>
                     <div class="actions">
-                        <button class="action-edit">Edit</button>
-                        <button class="action-remove">Remove</button>
+                        <button class="action-edit"><span class="icon icon-pencil"></span> Edit</button>
+                        <button class="action-remove"><span class="icon icon-trash"></span> Remove</button>
                     </div>`;
         return obj;
     }

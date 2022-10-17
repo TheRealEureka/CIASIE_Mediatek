@@ -1,0 +1,28 @@
+.menu{
+  display: flex;
+  justify-content: space-between;
+
+  .menu-items{
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    border-bottom: grey 2px solid;
+
+    li{
+      padding:7px 20px;
+      cursor: pointer;
+      &:hover{
+        background-color: $grey-color;
+      }
+      }
+    .selected{
+      background-color: $grey-color;
+      border-bottom:black 2px solid;
+    }
+    }
+  button{
+    border-radius: 0;
+  }
+  }
+
+

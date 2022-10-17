@@ -29,6 +29,10 @@ function display(){
     })
 }
 
+export function displayByType(type){
+
+}
+
 function edit(media){
 
 }

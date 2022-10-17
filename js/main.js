@@ -3,7 +3,7 @@ import {Book} from "./book.mjs";
 import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
-import {addMedia} from "./mediaManager.mjs";
+import {addMedia, displayByType} from "./mediaManager.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -22,8 +22,7 @@ for (let child of menu_item.children) {
 
 //Select tab
 function select(tab) {
-
-    console.log(tab);
+displayByType(tab);
 }
 
 //Popup

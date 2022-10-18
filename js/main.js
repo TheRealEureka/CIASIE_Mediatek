@@ -8,6 +8,7 @@ import {addMedia, displayByType} from "./mediaManager.mjs";
 
 let menu_item = document.getElementById('nav_items');
 
+let current_tab = "all";
 
 for (let child of menu_item.children) {
     child.addEventListener('click', function (e) {
@@ -22,8 +23,13 @@ for (let child of menu_item.children) {
 
 //Select tab
 function select(tab) {
-displayByType(tab);
+    current_tab = tab;
+    displayByType(tab);
 }
+document.getElementById("sort").addEventListener('change', function () {
+    displayByType(current_tab, this.value);
+});
+
 
 //Popup
 

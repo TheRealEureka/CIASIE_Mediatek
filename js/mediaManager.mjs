@@ -4,6 +4,7 @@ import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 
 let tab = [];
+
 get();
 display()
 
@@ -13,7 +14,7 @@ export function addMedia(media) {
     save();
 }
 
-function display(type ="all", sort = "") {
+function display(type ="all", sort = "title") {
         //sort array by release date
     let sorted = tab;
     switch (sort){
@@ -63,8 +64,9 @@ function display(type ="all", sort = "") {
     })
 }
 
-export function displayByType(type) {
-    display(type);
+export function displayByType(type, sort="title") {
+    console.log(sort);
+    display(type, sort);
 }
 
 function edit(media) {

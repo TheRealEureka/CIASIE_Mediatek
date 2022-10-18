@@ -254,6 +254,11 @@ button:hover {
   display: none;
 }
 
+.error {
+  color: red;
+  border: 0;
+}
+
 .icon {
   width: 16px;
   height: 16px;

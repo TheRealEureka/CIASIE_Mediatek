@@ -61,7 +61,10 @@ document.getElementById('popup_continue').addEventListener('click', function () 
         document.getElementById('title').addEventListener('click', function () {
             document.getElementById('title').style.border = "#c2c2c2 1px solid";
         });
+        document.getElementById('messerror_create').innerText = "Please enter a title";
     } else {
+        document.getElementById('messerror_create').innerText = "";
+
         displayStep(3);
         document.getElementById('title').style.border = "";
     }

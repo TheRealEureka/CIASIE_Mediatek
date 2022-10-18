@@ -5,6 +5,7 @@ import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType} from "./mediaManager.mjs";
 import {getByID,getByTitle} from "./import.mjs";
+import {Media} from "./media.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -160,6 +161,12 @@ document.getElementById('popup_import').addEventListener('click', async function
         }
         else
         {
+            document.getElementById('result_title').innerText = 'Title : '+result_query.Title;
+            document.getElementById('result_release').innerText = 'Release Date : '+result_query.Released;
+            document.getElementById('result_director').innerText = 'Director : '+result_query.Director;
+            document.getElementById('result_image').src = result_query.Poster;
+
+            console.log(result_query);
             displayStep(5);
         }
     }
@@ -169,7 +176,9 @@ document.getElementById('popup_import_final_back').addEventListener('click', fun
     displayStep(4);
 });
 document.getElementById('popup_import_final').addEventListener('click',  function () {
-    //Final
+    addMedia( new Movie(result_query.Title,result_query.Director,result_query.Released,result_query.Poster));
+    togglePopup();
+
 
 });
 
@@ -180,6 +189,7 @@ function togglePopup() {
     document.getElementById('image').value = "";
     document.getElementById('ART').value = "";
     document.getElementById('med').value = "Mov";
+    document.getElementById('search').value = "";
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }

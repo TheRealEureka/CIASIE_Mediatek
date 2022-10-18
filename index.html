@@ -55,6 +55,7 @@
                 <input type="text" id="image" name="image" placeholder="Image URL">
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" placeholder="Description"></textarea>
+                <p class="error" id="messerror_create"></p>
                 <div class="popup_action_buttons">
                     <button class="popup_back" data-step="2" id="popup_back"><- Back</button>
                     <button class="popup_continue" data-step="2" id="popup_continue">Continue -></button>
@@ -79,7 +80,7 @@
                     <input id="input_radio_id" type="radio" name="radio_type" value="id" />
                 </div>
                 <label for="search">Search value : </label>
-                <input id="search" type="text" placeholder="Exemple : Avengers"><p id="messerror"></p>
+                <input id="search" type="text" placeholder="Exemple : Avengers"><p class="error" id="messerror"></p>
                 <div class="popup_action_buttons">
                     <button class="popup_continue" data-step="4" id="popup_import">Continue -></button>
                 </div>

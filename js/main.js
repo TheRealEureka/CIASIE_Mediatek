@@ -61,7 +61,10 @@ document.getElementById('popup_continue').addEventListener('click', function () 
         document.getElementById('title').addEventListener('click', function () {
             document.getElementById('title').style.border = "#c2c2c2 1px solid";
         });
+        document.getElementById('messerror_create').innerText = "Please enter a title";
     } else {
+        document.getElementById('messerror_create').innerText = "";
+
         displayStep(3);
         document.getElementById('title').style.border = "";
     }
@@ -141,7 +144,7 @@ document.getElementById('go_to_create').addEventListener('click', function () {
 });
 
 document.getElementById('popup_back').addEventListener('click', function () {
-    displayStep(4);
+    displayStep(1);
 });
 let note;
 let result_query = {};
@@ -159,7 +162,6 @@ document.getElementById('popup_import').addEventListener('click', async function
             document.getElementById('messerror').innerText = 'No movie found';
         } else {
             document.getElementById('search').style.border = "black 2px solid";
-            document.getElementById('messerror').innerText = '';
 
 
             if (result_query.Ratings[0] !== undefined) {
@@ -188,12 +190,17 @@ document.getElementById('popup_import').addEventListener('click', async function
             document.getElementById('result_release').innerText = 'Release Date : ' + result_query.Released;
             document.getElementById('result_director').innerText = 'Director : ' + result_query.Director;
             document.getElementById('result_image').src = result_query.Poster;
+
             document.getElementById('result_plot').innerText = 'Plot : ' + result_query.Plot;
 
 
-            console.log(result_query);
+            document.getElementById('result_plot').innerText ='Plot : '+ result_query.Plot;
+            document.getElementById('messerror').innerText = '';
+
+
             displayStep(5);
         }
+
     }
 });
 
@@ -216,6 +223,9 @@ function togglePopup() {
     document.getElementById('med').value = "Mov";
     document.getElementById('search').value = "";
     document.getElementById('description').value = "";
+    document.getElementById('description').value ="";
+    document.getElementById('messerror').innerText = '';
+    document.getElementById('messerror_create').innerText = '';
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }

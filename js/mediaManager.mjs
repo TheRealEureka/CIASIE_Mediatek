@@ -88,6 +88,8 @@ function edit(media) {
         }
         display();
         save();
+        document.getElementById('popupEdit').classList.add('hidden');
+
     });
 
 }

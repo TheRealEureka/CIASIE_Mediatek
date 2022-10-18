@@ -192,7 +192,7 @@ document.getElementById('popup_import_final').addEventListener('click',  functio
 });
 
 
-function togglePopup() {
+export function togglePopup() {
     document.getElementById('title').value = "";
     document.getElementById('release').value = "";
     document.getElementById('image').value = "";
@@ -202,11 +202,13 @@ function togglePopup() {
     document.getElementById('description').value ="";
     document.getElementById('messerror').innerText = '';
     document.getElementById('messerror_create').innerText = '';
+    document.getElementById("messerror_edit").innerText = "";
+
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }
 
-function displayStep(step) {
+export function displayStep(step) {
     for (let i = 0; i < steps.length; i++) {
         steps[i].classList.add('hidden');
     }

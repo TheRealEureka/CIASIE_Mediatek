@@ -23,6 +23,16 @@
   button{
     border-radius: 0;
   }
+  select{
+    padding: 0 20px;
+    background-color: #F7F7F7FF;
+    border-bottom: grey 2px solid;
+    cursor: pointer;
+    &:hover, &:focus, &:visited, &:active, &:link{
+      border: none;
+      border-bottom: grey 2px solid;
+    }
+  }
   }
 
 

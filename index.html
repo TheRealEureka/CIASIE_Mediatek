@@ -64,7 +64,7 @@
             <div id="popup_step3" class="step last-step hidden" >
                 <p>Specific</p>
                 <label for="ART" id="label_spec">Director:</label>
-              <input id="ART" type="text">
+                <input id="ART" type="text">
                 <div class="popup_action_buttons">
                     <button class="popup_back" data-step="3" id="popup_final_back"><- Back</button>
                     <button class="popup_continue" data-step="3" id="popup_final">Continue -></button>
@@ -106,31 +106,30 @@
                     <button class="popup_continue" data-step="5" id="popup_import_final">Continue -></button>
                 </div>
             </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-<div id="popupEdit" class ="popup hidden">
-    <div class="popup-content">
-        <p class="close" id="close_popupEd">X</p>
-
-        <div class="form-add-media">
-            <div id="popup_step1Ed" class="step middle-step">
-                <p>Edit cover</p>
-                <label for="pochette">Cover</label>
-                <input type="text" id="pochette" name="pochette" placeholder="Image URL">
-                <div class="popup_action_buttons">
-                   <button id="editCover">Done -></button>
-              </div>
+        <div id="popup_step6" class="step edit-step hidden" >
+            <p>Edit</p>
+            <label for="edit_title">Title:</label>
+            <input type="text" id="edit_title" name="title" placeholder="Title">
+            <label for="edit_release">Release date:</label>
+            <input type="date" id="edit_release" name="release" placeholder="Release date">
+            <label for="edit_image">Image URL :</label>
+            <input type="text" id="edit_image" name="image" placeholder="Image URL">
+            <label for="edit_description">Description:</label>
+            <textarea id="edit_description" name="description" placeholder="Description"></textarea>
+            <label for="edit_ART" id="edit_label_spec">Director:</label>
+            <input id="edit_ART" type="text">
+            <p class="error" id="messerror_edit"></p>
+            <div class="popup_action_buttons">
+                <button class="popup_back" data-step="5" id="popup_edit_back"><- Cancel</button>
+                <button class="popup_continue" data-step="5" id="popup_edit_final">Edit -></button>
             </div>
         </div>
-
     </div>
+    </div>
+
 </div>
+
+
 <script type="module" src="js/main.js"></script>
 
 </body>

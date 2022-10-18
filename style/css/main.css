@@ -161,7 +161,9 @@ button:hover {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  max-width: 80%;
+  max-height: 80%;
+  overflow: scroll;
 }
 .popup .popup-content a {
   margin: 5px;
@@ -195,27 +197,27 @@ button:hover {
   min-height: 50px;
   margin-bottom: 10px;
 }
-.popup .popup-content .form-add-media .middle-step label, .popup .popup-content .form-add-media .last-step label, .popup .popup-content .form-add-media .import-step label {
+.popup .popup-content .form-add-media .middle-step label, .popup .popup-content .form-add-media .last-step label, .popup .popup-content .form-add-media .import-step label, .popup .popup-content .form-add-media .edit-step label {
   font-weight: normal;
   text-align: left;
 }
-.popup .popup-content .form-add-media .middle-step input, .popup .popup-content .form-add-media .last-step input, .popup .popup-content .form-add-media .import-step input {
+.popup .popup-content .form-add-media .middle-step input, .popup .popup-content .form-add-media .last-step input, .popup .popup-content .form-add-media .import-step input, .popup .popup-content .form-add-media .edit-step input {
   max-width: 250px;
   padding: 5px;
 }
-.popup .popup-content .form-add-media .middle-step .popup_action_buttons, .popup .popup-content .form-add-media .last-step .popup_action_buttons, .popup .popup-content .form-add-media .import-step .popup_action_buttons {
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons, .popup .popup-content .form-add-media .last-step .popup_action_buttons, .popup .popup-content .form-add-media .import-step .popup_action_buttons, .popup .popup-content .form-add-media .edit-step .popup_action_buttons {
   display: flex;
   justify-content: space-between;
 }
-.popup .popup-content .form-add-media .middle-step .popup_action_buttons button, .popup .popup-content .form-add-media .last-step .popup_action_buttons button, .popup .popup-content .form-add-media .import-step .popup_action_buttons button {
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons button, .popup .popup-content .form-add-media .last-step .popup_action_buttons button, .popup .popup-content .form-add-media .import-step .popup_action_buttons button, .popup .popup-content .form-add-media .edit-step .popup_action_buttons button {
   width: 100%;
   padding: 10px;
   border-radius: 0;
 }
-.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .import-step .popup_action_buttons .popup_back {
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .import-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .edit-step .popup_action_buttons .popup_back {
   background-color: grey;
 }
-.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .import-step .popup_action_buttons .popup_back:hover {
+.popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .import-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .edit-step .popup_action_buttons .popup_back:hover {
   background-color: #7a7a7a;
 }
 .popup .popup-content .form-add-media .import-step .radio-form {
@@ -239,10 +241,10 @@ button:hover {
   font-weight: normal;
   border: none;
 }
-.popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button {
+.popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button, .popup .popup-content .form-add-media .edit-step select, .popup .popup-content .form-add-media .edit-step button {
   padding: 10px 20px;
 }
-.popup .popup-content .form-add-media .middle-step p, .popup .popup-content .form-add-media .last-step p, .popup .popup-content .form-add-media .import-step p {
+.popup .popup-content .form-add-media .middle-step p, .popup .popup-content .form-add-media .last-step p, .popup .popup-content .form-add-media .import-step p, .popup .popup-content .form-add-media .edit-step p {
   border-bottom: grey 2px solid;
   margin-bottom: 10px;
 }

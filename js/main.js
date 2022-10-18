@@ -176,7 +176,7 @@ document.getElementById('popup_import_final_back').addEventListener('click', fun
     displayStep(4);
 });
 document.getElementById('popup_import_final').addEventListener('click',  function () {
-    addMedia( new Movie(result_query.Title,result_query.Director,result_query.Released,result_query.Poster, result_query.Plot));
+    addMedia( new Movie(result_query.Title+' - IMDB',result_query.Director,result_query.Released,result_query.Poster, result_query.Plot));
     togglePopup();
 
 

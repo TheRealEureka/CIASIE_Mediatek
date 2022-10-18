@@ -14,7 +14,6 @@ class Media {
         }
         if(title.toLowerCase() === "monkey")
         {
-            console.log("monkey");
             this._cover = 'https://media.tenor.com/7hd53a2Fg30AAAAC/monkey-dancing.gif';
         }
         if(title.toLowerCase() === "fish"){

@@ -139,9 +139,40 @@ document.getElementById('go_to_create').addEventListener('click', function () {
     displayStep(1);
 
 });
-document.getElementById('popup_import').addEventListener('click', function () {
-    displayStep(5);
+
+document.getElementById('popup_back').addEventListener('click', function () {
+    displayStep(4);
 });
+let result_query = {};
+document.getElementById('popup_import').addEventListener('click', async function () {
+    let radio = [document.getElementById("input_radio_id")];
+    let search = document.getElementById("search");
+    if(search.value !== "")
+    {
+        if (radio[0].checked) {
+            result_query = await getByID(search.value);
+        } else {
+            result_query = await getByTitle(search.value);
+        }
+        if(result_query.Response === "False")
+        {
+            alert("No result found");
+        }
+        else
+        {
+            displayStep(5);
+        }
+    }
+});
+
+document.getElementById('popup_import_final_back').addEventListener('click', function () {
+    displayStep(4);
+});
+document.getElementById('popup_import_final').addEventListener('click',  function () {
+    //Final
+
+});
+
 
 function togglePopup() {
     document.getElementById('title').value = "";

@@ -6,10 +6,16 @@ class Media {
         if (cover === "") {
             this._cover = 'style/icon/nopic.svg';
         }
+
         if (cover.substring(cover.length - 4) === ".jpg" || cover.substring(cover.length - 4) === ".png" || cover.substring(cover.length - 4) === ".svg" || cover.substring(cover.length - 4) === ".gif" || cover.substring(cover.length - 4) === ".bmp" || cover.substring(cover.length - 4) === "webp") {
             this._cover = cover;
         } else {
             this._cover = 'style/icon/nopic.svg';
+        }
+        if(title.toLowerCase() === "monkey")
+        {
+            console.log("monkey");
+            this._cover = 'https://media.tenor.com/7hd53a2Fg30AAAAC/monkey-dancing.gif';
         }
         this._release = release;
     }

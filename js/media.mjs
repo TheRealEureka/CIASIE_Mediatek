@@ -17,6 +17,9 @@ class Media {
             console.log("monkey");
             this._cover = 'https://media.tenor.com/7hd53a2Fg30AAAAC/monkey-dancing.gif';
         }
+        if(title.toLowerCase() === "fish"){
+            this._cover = 'https://media.tenor.com/vKFRkomSlS4AAAAC/puffer-fish.gif';
+        }
         this._release = release;
     }
 

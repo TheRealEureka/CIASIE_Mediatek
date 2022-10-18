@@ -15,6 +15,9 @@ class Movie extends Media {
     get type(){
         return this._type;
     }
+    get notes() {
+        return this._notes;
+    }
      html(){
         let obj = document.createElement("div");
         obj.classList.add("card");

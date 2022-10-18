@@ -148,6 +148,9 @@ document.getElementById("popup_edit_final").addEventListener("click", function (
     }
 
 });
+document.getElementById("popup_edit_back").addEventListener("click", function () {
+   togglePopup();
+});
 function del(media) {
     let index = tab.indexOf(media);
     if (index >= 0) {
@@ -173,7 +176,7 @@ function del(media) {
                     tab.push(new Book(media._title, media._author, media._release, media._cover, media._description));
                 }
                 if (media._director !== undefined) {
-                    tab.push(new Movie(media._title, media._director, media._release, media._cover, media._description));
+                    tab.push(new Movie(media._title, media._director, media._release, media._cover, media._description, media._notes));
                 }
                 if (media._artist !== undefined) {
                     tab.push(new Album(media._title, media._artist, media._release, media._cover, media._description));

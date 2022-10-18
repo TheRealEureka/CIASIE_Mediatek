@@ -151,7 +151,8 @@ let result_query = {};
 document.getElementById('popup_import').addEventListener('click', async function () {
     let radio = [document.getElementById("input_radio_id")];
     let search = document.getElementById("search");
-    if (search.value !== "") {
+    let regex = new RegExp('^\s*$');
+    if (!regex.test(search.value)) {
         if (radio[0].checked) {
             result_query = await getByID(search.value);
         } else {
@@ -200,6 +201,11 @@ document.getElementById('popup_import').addEventListener('click', async function
 
             displayStep(5);
         }
+
+    }
+    else
+    {
+        document.getElementById('messerror').innerText = 'Please enter a title';
 
     }
 });

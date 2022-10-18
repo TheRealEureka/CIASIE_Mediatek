@@ -102,12 +102,7 @@ document.getElementById('popup_final').addEventListener('click', function () {
     addMedia(obj);
 });
 
-function displayStep(step) {
-    for (let i = 0; i < steps.length; i++) {
-        steps[i].classList.add('hidden');
-    }
-    document.getElementById('popup_step' + step).classList.remove('hidden');
-}
+
 
 //Generate specific form for each media type
 let type = document.getElementById("med");
@@ -137,7 +132,16 @@ type.addEventListener('change', function () {
     document.getElementById("label_spec").innerText = label;
 });
 
+document.getElementById('go_to_import').addEventListener('click', function () {
+    displayStep(4)
+});
+document.getElementById('go_to_create').addEventListener('click', function () {
+    displayStep(1);
 
+});
+document.getElementById('popup_import').addEventListener('click', function () {
+    displayStep(5);
+});
 
 function togglePopup() {
     document.getElementById('title').value = "";
@@ -149,3 +153,9 @@ function togglePopup() {
     document.getElementById('popup').classList.toggle('hidden');
 }
 
+function displayStep(step) {
+    for (let i = 0; i < steps.length; i++) {
+        steps[i].classList.add('hidden');
+    }
+    document.getElementById('popup_step' + step).classList.remove('hidden');
+}

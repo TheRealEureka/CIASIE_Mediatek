@@ -76,7 +76,13 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    ;
+    a {
+      margin: 5px;
+      color: $primary-color;
+      text-decoration: underline;
+      font-size: 15px;
+      font-weight: bold;
+    }
     .close {
       text-align: left;
       font-size: 30px;
@@ -97,7 +103,7 @@
           margin: 20px 0;
         }
       }
-      .middle-step,.last-step{
+      .middle-step,.last-step,.import-step{
         label{
           font-weight: normal;
           text-align: left;
@@ -123,12 +129,38 @@
 
         }
       }
+      .import-step{
+          .radio-form {
+            text-align: left;
+
+            input {
+              padding: 5px;
+            }
+          }
+          .result{
+            display: flex;
+
+            .result-image > img{
+              width: 300px;
+              height: auto;
+              margin-bottom: 10px;
+            }
+            .result-data {
+                margin-left: 20px;
+              p {
+                font-weight: normal;
+                border: none;
+              }
+            }
+          }
+      }
+
       .first-step, .last-step{
         select,button{
           padding: 10px 20px;
         }
       }
-      .middle-step, .last-step{
+      .middle-step, .last-step, .import-step{
         p{
           border-bottom: $grey-color 2px solid;
           margin-bottom: 10px;

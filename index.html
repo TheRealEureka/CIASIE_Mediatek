@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>MONKEY MEDIATEK</title>
@@ -43,6 +43,7 @@
                     <option value="Albm">Album</option>
                 </select>
                 <button id="create">Create -></button>
+                <a href="#" id="go_to_import">Or import with IMdb</a>
             </div>
             <div id="popup_step2" class="step middle-step hidden">
                 <p>Général</p>
@@ -66,7 +67,45 @@
                     <button class="popup_continue" data-step="3" id="popup_final">Continue -></button>
                 </div>
             </div>
+            <div id="popup_step4" class="step import-step hidden" >
+                <p>Import with IMDb</p>
+                <label>Search by :</label>
+                <div class="radio-form">
+                    <label for="input_radio_id"> Id </label>
+                    <input id="input_radio_id" type="radio" name="radio_type" value="id" checked/>
+                    <label for="input_radio_title"> Title </label>
+                    <input id="input_radio_title" type="radio" name="radio_type" value="title"/>
+                </div>
+                <label for="search">Search value : </label>
+                <input id="search" type="text" placeholder="Avengers : Endgame">
+                <div class="popup_action_buttons">
+                    <button class="popup_continue" data-step="4" id="popup_import">Continue -></button>
+                </div>
+                <a href="#" id="go_to_create">Or create</a>
+
+            </div>
+            <div id="popup_step5" class="step import-step hidden" >
+                <p>Check data</p>
+                <div class="result">
+                    <div class="result-image">
+                        <img id="result_image" src="https://media.tenor.com/7hd53a2Fg30AAAAC/monkey-dancing.gif" alt="image">
+                    </div>
+                    <div class="result-data">
+                        <p id="result_title">Title : </p>
+                        <p id="result_release">Release date : </p>
+                        <p id="result_director">Director : </p>
+                    </div>
+                </div>
+
+                <div class="popup_action_buttons">
+                    <button class="popup_back" data-step="5" id="popup_import_final_back"><- Back</button>
+                    <button class="popup_continue" data-step="5" id="popup_import_final">Continue -></button>
+                </div>
+            </div>
+
+
         </div>
+
     </div>
 
 </div>

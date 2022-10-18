@@ -5,7 +5,6 @@ import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType} from "./mediaManager.mjs";
 import {getByID,getByTitle} from "./import.mjs";
-import {Media} from "./media.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -176,7 +175,7 @@ document.getElementById('popup_import_final_back').addEventListener('click', fun
     displayStep(4);
 });
 document.getElementById('popup_import_final').addEventListener('click',  function () {
-    addMedia( new Movie(result_query.Title,result_query.Director,result_query.Released,result_query.Poster));
+    addMedia( new Movie(result_query.Title,result_query.Director,result_query.Released,result_query.Poster, result_query.Plot));
     togglePopup();
 
 

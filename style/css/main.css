@@ -120,6 +120,9 @@ button:hover {
   padding: 7px;
   height: 100%;
 }
+.cards .card .card-content small {
+  display: block;
+}
 .cards .card .actions {
   margin-top: 5px;
   width: 100%;

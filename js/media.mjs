@@ -1,7 +1,7 @@
 class Media {
-    constructor(title, release, cover) {
+    constructor(title, release, cover, desc ="") {
         this._title = title;
-
+        this._description = desc;
 
         if (cover === "") {
             this._cover = 'style/icon/nopic.svg';
@@ -32,6 +32,9 @@ class Media {
 
     get release() {
         return this._release;
+    }
+    get description() {
+        return this._description;
     }
 
 }

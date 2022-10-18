@@ -156,10 +156,15 @@ document.getElementById('popup_import').addEventListener('click', async function
         }
         if(result_query.Response === "False")
         {
-            alert("No result found");
+            document.getElementById('search').style.border = "red 2px solid";
+            document.getElementById('messerror').innerText = 'No movie found';
         }
         else
         {
+            document.getElementById('search').style.border = "black 2px solid";
+            document.getElementById('messerror').innerText = '';
+
+
             document.getElementById('result_title').innerText = 'Title : '+result_query.Title;
             document.getElementById('result_release').innerText = 'Release Date : '+result_query.Released;
             document.getElementById('result_director').innerText = 'Director : '+result_query.Director;

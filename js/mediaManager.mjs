@@ -71,6 +71,9 @@ export function displayByType(type, sort="title") {
 
 function edit(media) {
     document.getElementById('popupEdit').classList.toggle('hidden');
+    document.getElementById('close_popupEd').addEventListener('click', function () {
+        document.getElementById('popupEdit').classList.toggle('hidden');
+    });
 
     document.getElementById("editCover").addEventListener("click", function () {
         let tmpcover = document.getElementById("pochette").value;

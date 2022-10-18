@@ -80,21 +80,22 @@ document.getElementById('popup_final').addEventListener('click', function () {
     let year = document.getElementById('release').value;
     let cover = document.getElementById('image').value;
     let artist = document.getElementById('ART').value;
+    let desc = document.getElementById('description').value;
 
     let type = document.getElementById('med').value;
     let obj;
     switch (type) {
         case "Boo":
-            obj = new Book(title, artist, year, cover);
+            obj = new Book(title, artist, year, cover, desc);
             break;
         case "Mov":
-            obj = new Movie(title, artist, year, cover);
+            obj = new Movie(title, artist, year, cover, desc);
             break;
         case "Albm":
-            obj = new Album(title,artist, year, cover);
+            obj = new Album(title,artist, year, cover, desc);
             break;
         case "Gam":
-            obj = new Game(title, artist, year, cover);
+            obj = new Game(title, artist, year, cover, desc);
             break;
     }
     //reset fields
@@ -195,6 +196,7 @@ function togglePopup() {
     document.getElementById('ART').value = "";
     document.getElementById('med').value = "Mov";
     document.getElementById('search').value = "";
+    document.getElementById('description').value ="";
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }

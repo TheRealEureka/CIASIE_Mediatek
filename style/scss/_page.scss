@@ -101,17 +101,23 @@
       .step{
         display: flex;
         flex-direction: column;
-        input,select{
+
+         input,  select{
           border: $grey-color 1px solid;
           margin: 20px 0;
         }
+        textarea{
+          border: $grey-color 1px solid;
+          min-height: 50px;
+          margin-bottom: 10px ;
+        }
       }
       .middle-step,.last-step,.import-step{
-        label{
+         label{
           font-weight: normal;
           text-align: left;
         }
-        input{
+         input{
           max-width: 250px;
           padding: 5px;
         }
@@ -133,10 +139,10 @@
         }
       }
       .import-step{
-          .radio-form {
+         .radio-form {
             text-align: left;
 
-            input {
+           input {
               padding: 5px;
             }
           }

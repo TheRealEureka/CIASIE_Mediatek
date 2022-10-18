@@ -190,6 +190,11 @@ button:hover {
   border: grey 1px solid;
   margin: 20px 0;
 }
+.popup .popup-content .form-add-media .step textarea {
+  border: grey 1px solid;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
 .popup .popup-content .form-add-media .middle-step label, .popup .popup-content .form-add-media .last-step label, .popup .popup-content .form-add-media .import-step label {
   font-weight: normal;
   text-align: left;

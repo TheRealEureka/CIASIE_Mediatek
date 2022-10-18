@@ -164,6 +164,7 @@ document.getElementById('popup_import').addEventListener('click', async function
             document.getElementById('result_release').innerText = 'Release Date : '+result_query.Released;
             document.getElementById('result_director').innerText = 'Director : '+result_query.Director;
             document.getElementById('result_image').src = result_query.Poster;
+            document.getElementById('result_plot').innerText ='Plot : '+ result_query.Plot;
 
             console.log(result_query);
             displayStep(5);

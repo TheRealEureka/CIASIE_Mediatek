@@ -63,14 +63,24 @@ button:hover {
   cursor: pointer;
 }
 .menu .menu-items li:hover {
-  background-color: #c2c2c2;
+  background-color: #f7f7f7;
 }
 .menu .menu-items .selected {
-  background-color: #c2c2c2;
+  background-color: #f7f7f7;
   border-bottom: black 2px solid;
 }
 .menu button {
   border-radius: 0;
+}
+.menu select {
+  padding: 0 20px;
+  background-color: #f7f7f7;
+  border-bottom: grey 2px solid;
+  cursor: pointer;
+}
+.menu select:hover, .menu select:focus, .menu select:visited, .menu select:active, .menu select:link {
+  border: none;
+  border-bottom: grey 2px solid;
 }
 
 .content {
@@ -167,7 +177,7 @@ button:hover {
   flex-direction: column;
 }
 .popup .popup-content .form-add-media .step input, .popup .popup-content .form-add-media .step select {
-  border: #c2c2c2 1px solid;
+  border: #f7f7f7 1px solid;
   margin: 20px 0;
 }
 .popup .popup-content .form-add-media .middle-step label, .popup .popup-content .form-add-media .last-step label {
@@ -188,16 +198,16 @@ button:hover {
   border-radius: 0;
 }
 .popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back {
-  background-color: #c2c2c2;
+  background-color: #f7f7f7;
 }
 .popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back:hover {
-  background-color: #b9b9b9;
+  background-color: #ebebeb;
 }
 .popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button {
   padding: 10px 20px;
 }
 .popup .popup-content .form-add-media .middle-step p, .popup .popup-content .form-add-media .last-step p {
-  border-bottom: #c2c2c2 2px solid;
+  border-bottom: #f7f7f7 2px solid;
   margin-bottom: 10px;
 }
 .popup .popup-content .form-add-media .hidden {

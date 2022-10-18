@@ -114,7 +114,7 @@ document.getElementById("popup_edit_final").addEventListener("click", function (
     let title = document.getElementById("edit_title");
 
     let regex = new RegExp('^\s*$');
-    if (regex.test(title.value))
+    if (!regex.test(title.value))
     {
         let release = document.getElementById("edit_release");
     let cover = document.getElementById("edit_image");

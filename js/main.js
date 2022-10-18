@@ -4,7 +4,7 @@ import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType} from "./mediaManager.mjs";
-import {getByID,getByTitle} from "./import.mjs";
+import {getByID, getByTitle} from "./import.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -27,6 +27,7 @@ function select(tab) {
     current_tab = tab;
     displayByType(tab);
 }
+
 document.getElementById("sort").addEventListener('change', function () {
     displayByType(current_tab, this.value);
 });
@@ -42,7 +43,6 @@ document.getElementById('close_popup').addEventListener('click', function () {
     togglePopup()
     displayStep(1);
 });
-
 
 
 //Popup form
@@ -92,7 +92,7 @@ document.getElementById('popup_final').addEventListener('click', function () {
             obj = new Movie(title, artist, year, cover, desc);
             break;
         case "Albm":
-            obj = new Album(title,artist, year, cover, desc);
+            obj = new Album(title, artist, year, cover, desc);
             break;
         case "Gam":
             obj = new Game(title, artist, year, cover, desc);
@@ -102,7 +102,6 @@ document.getElementById('popup_final').addEventListener('click', function () {
     togglePopup();
     addMedia(obj);
 });
-
 
 
 //Generate specific form for each media type
@@ -144,33 +143,53 @@ document.getElementById('go_to_create').addEventListener('click', function () {
 document.getElementById('popup_back').addEventListener('click', function () {
     displayStep(4);
 });
+let note;
 let result_query = {};
 document.getElementById('popup_import').addEventListener('click', async function () {
     let radio = [document.getElementById("input_radio_id")];
     let search = document.getElementById("search");
-    if(search.value !== "")
-    {
+    if (search.value !== "") {
         if (radio[0].checked) {
             result_query = await getByID(search.value);
         } else {
             result_query = await getByTitle(search.value);
         }
-        if(result_query.Response === "False")
-        {
+        if (result_query.Response === "False") {
             document.getElementById('search').style.border = "red 2px solid";
             document.getElementById('messerror').innerText = 'No movie found';
-        }
-        else
-        {
+        } else {
             document.getElementById('search').style.border = "black 2px solid";
             document.getElementById('messerror').innerText = '';
 
 
-            document.getElementById('result_title').innerText = 'Title : '+result_query.Title;
-            document.getElementById('result_release').innerText = 'Release Date : '+result_query.Released;
-            document.getElementById('result_director').innerText = 'Director : '+result_query.Director;
+            if (result_query.Ratings[0] !== undefined) {
+                note = result_query.Ratings[0].Value;
+                note = note.split("/")[0]
+                console.log(note);
+                if (note === "N/A") {
+                    note = 'N/A';
+                } else {
+                    if (note > 9) {
+                        note = "⭐⭐⭐⭐⭐";
+                    } else if (note > 7) {
+                        note = "⭐⭐⭐⭐★";
+                    } else if (note > 5) {
+                        note = "⭐⭐⭐★★";
+                    } else if (note > 3) {
+                        note = "⭐⭐★★★";
+                    } else if (note > 1) {
+                        note = "⭐★★★★";
+                    } else {
+                        note = "★★★★★";
+                    }
+                }
+            }
+            document.getElementById('result_title').innerText = 'Title : ' + result_query.Title;
+            document.getElementById('result_release').innerText = 'Release Date : ' + result_query.Released;
+            document.getElementById('result_director').innerText = 'Director : ' + result_query.Director;
             document.getElementById('result_image').src = result_query.Poster;
-            document.getElementById('result_plot').innerText ='Plot : '+ result_query.Plot;
+            document.getElementById('result_plot').innerText = 'Plot : ' + result_query.Plot;
+
 
             console.log(result_query);
             displayStep(5);
@@ -181,8 +200,8 @@ document.getElementById('popup_import').addEventListener('click', async function
 document.getElementById('popup_import_final_back').addEventListener('click', function () {
     displayStep(4);
 });
-document.getElementById('popup_import_final').addEventListener('click',  function () {
-    addMedia( new Movie(result_query.Title+' - IMDB',result_query.Director,result_query.Released,result_query.Poster, result_query.Plot));
+document.getElementById('popup_import_final').addEventListener('click', function () {
+    addMedia(new Movie(result_query.Title + ' - IMDB', result_query.Director, result_query.Released, result_query.Poster, result_query.Plot, note));
     togglePopup();
 
 
@@ -196,7 +215,7 @@ function togglePopup() {
     document.getElementById('ART').value = "";
     document.getElementById('med').value = "Mov";
     document.getElementById('search').value = "";
-    document.getElementById('description').value ="";
+    document.getElementById('description').value = "";
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }

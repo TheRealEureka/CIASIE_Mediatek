@@ -4,6 +4,7 @@ import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType} from "./mediaManager.mjs";
+import {getByID,getByTitle} from "./import.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -147,3 +148,4 @@ function togglePopup() {
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }
+

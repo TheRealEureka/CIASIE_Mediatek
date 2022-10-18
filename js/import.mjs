@@ -5,10 +5,7 @@ const POSTER_API_URL = "https://img.omdbapi.com/?apikey=" + API_KEY;
 
 function sendRequest(parameters) {
     let options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
+        method: "GET"
     }
     return     fetch(API_URL+parameters, options)
         .then(response => {

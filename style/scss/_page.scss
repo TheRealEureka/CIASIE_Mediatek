@@ -115,9 +115,9 @@
             border-radius: 0;
           }
           .popup_back{
-            background-color: $grey-color;
+            background-color: grey;
             &:hover{
-              background-color: adjust-color($grey-color, $blackness: 5%);
+              background-color: adjust-color(grey, $blackness: 5%);
             }
           }
 

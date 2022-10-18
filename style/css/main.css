@@ -198,10 +198,10 @@ button:hover {
   border-radius: 0;
 }
 .popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back {
-  background-color: #f7f7f7;
+  background-color: grey;
 }
 .popup .popup-content .form-add-media .middle-step .popup_action_buttons .popup_back:hover, .popup .popup-content .form-add-media .last-step .popup_action_buttons .popup_back:hover {
-  background-color: #ebebeb;
+  background-color: #7a7a7a;
 }
 .popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button {
   padding: 10px 20px;

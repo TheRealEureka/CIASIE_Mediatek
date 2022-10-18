@@ -70,6 +70,21 @@ export function displayByType(type, sort="title") {
 }
 
 function edit(media) {
+    document.getElementById('popupEdit').classList.toggle('hidden');
+
+    document.getElementById("editCover").addEventListener("click", function () {
+        let tmpcover = document.getElementById("pochette").value;
+        if (tmpcover.substring(tmpcover.length - 4) === ".jpg" || tmpcover.substring(tmpcover.length - 4) === ".png" || tmpcover.substring(tmpcover.length - 4) === ".svg" || tmpcover.substring(tmpcover.length - 4) === ".gif" || tmpcover.substring(tmpcover.length - 4) === ".bmp" || tmpcover.substring(tmpcover.length - 4) === "webp") {
+            media._cover = tmpcover;
+            console.log("oui");
+        } else {
+            media._cover = 'style/icon/nopic.svg';
+            console.log("non");
+        }
+        console.log(media._cover);
+        display();
+        save();
+    });
 
 }
 

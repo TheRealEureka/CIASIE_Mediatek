@@ -13,9 +13,41 @@ export function addMedia(media) {
     save();
 }
 
-function display(type ="all") {
+function display(type ="all", sort = "") {
+        //sort array by release date
+    let sorted = tab;
+    switch (sort){
+        case "date":
+             sorted.sort(function (a, b) {
+                return new Date(b.release) - new Date(a.release);
+            });
+            break;
+        case "title":
+            sorted.sort(function (a, b) {
+                if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                    return -1;
+                }
+                if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+        case "type" :
+            sorted.sort(function (a, b) {
+                if (a.type < b.type) {
+                    return -1;
+                }
+                if (a.type > b.type) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+    }
+
     document.getElementById("cards").innerHTML = "";
-    tab.forEach(function (media) {
+    sorted.forEach(function (media) {
         if(media.type === type || type === "all") {
             let med = media.html();
             med.children[2].children[0].addEventListener("click", function () {

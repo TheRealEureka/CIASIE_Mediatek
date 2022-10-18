@@ -87,7 +87,7 @@ button:hover {
 .cards {
   height: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   margin: 10px;
 }
 .cards .card {

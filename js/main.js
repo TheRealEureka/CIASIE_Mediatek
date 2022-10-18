@@ -145,7 +145,7 @@ document.getElementById('go_to_create').addEventListener('click', function () {
 });
 
 document.getElementById('popup_back').addEventListener('click', function () {
-    displayStep(4);
+    displayStep(1);
 });
 let result_query = {};
 document.getElementById('popup_import').addEventListener('click', async function () {
@@ -166,7 +166,6 @@ document.getElementById('popup_import').addEventListener('click', async function
         else
         {
             document.getElementById('search').style.border = "black 2px solid";
-            document.getElementById('messerror').innerText = '';
 
 
             document.getElementById('result_title').innerText = 'Title : '+result_query.Title;
@@ -174,10 +173,11 @@ document.getElementById('popup_import').addEventListener('click', async function
             document.getElementById('result_director').innerText = 'Director : '+result_query.Director;
             document.getElementById('result_image').src = result_query.Poster;
             document.getElementById('result_plot').innerText ='Plot : '+ result_query.Plot;
+            document.getElementById('messerror').innerText = '';
 
-            console.log(result_query);
             displayStep(5);
         }
+
     }
 });
 
@@ -200,6 +200,8 @@ function togglePopup() {
     document.getElementById('med').value = "Mov";
     document.getElementById('search').value = "";
     document.getElementById('description').value ="";
+    document.getElementById('messerror').innerText = '';
+    document.getElementById('messerror_create').innerText = '';
     displayStep(1);
     document.getElementById('popup').classList.toggle('hidden');
 }

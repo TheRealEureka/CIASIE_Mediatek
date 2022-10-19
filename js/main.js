@@ -3,7 +3,7 @@ import {Book} from "./book.mjs";
 import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
-import {addMedia, displayByType} from "./mediaManager.mjs";
+import {addMedia, displayByType, save} from "./mediaManager.mjs";
 import {getAlbumByTitle, getByID, getByTitle} from "./import.mjs";
 
 
@@ -260,6 +260,95 @@ document.getElementById('popup_import_final').addEventListener('click', function
 
 });
 
+let current_editing = null;
+
+export function edit(media) {
+    current_editing = media;
+
+    togglePopup();
+    displayStep(6);
+    let label = "Studio :";
+    let spec_atr = "";
+    switch (media.type) {
+        case "books":
+            label = "Author :";
+            spec_atr = media.author;
+            break;
+
+        case "movies":
+            label = "Director :";
+            spec_atr = media.director;
+            break;
+
+        case "albums":
+            label = "Artist :";
+            spec_atr = media.artist;
+            break;
+
+        case "games":
+            label = "Studio :";
+            spec_atr = media.creator;
+            break;
+    }
+    document.getElementById("edit_label_spec").innerText = label;
+    let title = document.getElementById("edit_title");
+    let release = document.getElementById("edit_release");
+    let cover = document.getElementById("edit_image");
+    let desc = document.getElementById("edit_description");
+    let spec = document.getElementById("edit_ART");
+    title.value = media.title;
+    if(new RegExp('^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)(?:0?2|(?:Feb))\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$\n').test(media.release))
+    {
+        release.value = new Date(media.release).toISOString().substr(0, 10);
+
+    }
+
+    cover.value = media.cover;
+    desc.value = media.description;
+    spec.value = spec_atr;
+}
+
+document.getElementById("popup_edit_final").addEventListener("click", function () {
+    let title = document.getElementById("edit_title");
+
+    let regex = new RegExp('^\s*$');
+    if (!regex.test(title.value))
+    {
+        let release = document.getElementById("edit_release");
+        let cover = document.getElementById("edit_image");
+        let desc = document.getElementById("edit_description");
+        let spec = document.getElementById("edit_ART");
+        current_editing._title = title.value;
+        current_editing._release = release.value;
+        current_editing._cover = cover.value;
+        current_editing._description = desc.value;
+        switch (current_editing.type) {
+            case "books":
+                current_editing._author = spec.value;
+                break;
+            case "movies":
+                current_editing._director = spec.value;
+                break;
+            case "albums":
+                current_editing._artist = spec.value;
+                break;
+            case "games":
+                current_editing._creator = spec.value;
+                break;
+        }
+        displayByType(current_tab);
+        save();
+        document.getElementById("messerror_edit").innerText = "";
+        togglePopup();
+    }
+    else{
+        document.getElementById("messerror_edit").innerText = "Title is required";
+    }
+
+});
+document.getElementById("popup_edit_back").addEventListener("click", function () {
+    togglePopup();
+});
 
 export function togglePopup() {
     document.getElementById('title').value = "";

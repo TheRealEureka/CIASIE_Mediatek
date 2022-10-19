@@ -4,7 +4,7 @@ import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType} from "./mediaManager.mjs";
-import {getByID, getByTitle} from "./import.mjs";
+import {getAlbumByTitle, getByID, getByTitle} from "./import.mjs";
 
 
 let menu_item = document.getElementById('nav_items');
@@ -148,73 +148,113 @@ document.getElementById('popup_back').addEventListener('click', function () {
 });
 let note;
 let result_query = {};
+let film = true;
+
 document.getElementById('popup_import').addEventListener('click', async function () {
-    let radio = [document.getElementById("input_radio_id")];
+    let radio = [document.getElementById("input_radio_id"), document.getElementById("input_radio_title"), document.getElementById("input_radio_album")];
     let search = document.getElementById("search");
     let regex = new RegExp('^\s*$');
     if (!regex.test(search.value)) {
         if (radio[0].checked) {
             result_query = await getByID(search.value);
-        } else {
+        } else if (radio[1].checked) {
             result_query = await getByTitle(search.value);
-        }
-        if (result_query.Response === "False") {
-            document.getElementById('search').style.border = "red 2px solid";
-            document.getElementById('messerror').innerText = 'No movie found';
         } else {
-            document.getElementById('search').style.border = "black 2px solid";
+            result_query = await getAlbumByTitle(search.value);
+            film = false;
+        }
+        if (film) {
+
+            if (result_query.Response === "False") {
+                document.getElementById('search').style.border = "red 2px solid";
+                document.getElementById('messerror').innerText = 'No movie found';
+            } else {
+                document.getElementById('search').style.border = "black 2px solid";
 
 
-            if (result_query.Ratings[0] !== undefined) {
-                note = result_query.Ratings[0].Value;
-                note = note.split("/")[0]
-                console.log(note);
-                if (note === "N/A") {
-                    note = 'N/A';
-                } else {
-                    if (note > 9) {
-                        note = "⭐⭐⭐⭐⭐";
-                    } else if (note > 7) {
-                        note = "⭐⭐⭐⭐★";
-                    } else if (note > 5) {
-                        note = "⭐⭐⭐★★";
-                    } else if (note > 3) {
-                        note = "⭐⭐★★★";
-                    } else if (note > 1) {
-                        note = "⭐★★★★";
+                if (result_query.Ratings[0] !== undefined) {
+                    note = result_query.Ratings[0].Value;
+                    note = note.split("/")[0]
+                    console.log(note);
+                    if (note === "N/A") {
+                        note = 'N/A';
                     } else {
-                        note = "★★★★★";
+                        if (note > 9) {
+                            note = "⭐⭐⭐⭐⭐";
+                        } else if (note > 7) {
+                            note = "⭐⭐⭐⭐★";
+                        } else if (note > 5) {
+                            note = "⭐⭐⭐★★";
+                        } else if (note > 3) {
+                            note = "⭐⭐★★★";
+                        } else if (note > 1) {
+                            note = "⭐★★★★";
+                        } else {
+                            note = "★★★★★";
+                        }
                     }
                 }
+                document.getElementById('result_title').innerText = 'Title : ' + result_query.Title;
+                document.getElementById('result_release').innerText = 'Release Date : ' + result_query.Released;
+                document.getElementById('result_director').innerText = 'Director : ' + result_query.Director;
+                document.getElementById('result_image').src = result_query.Poster;
+
+                document.getElementById('result_plot').innerText = 'Plot : ' + result_query.Plot;
+
+
+                document.getElementById('messerror').innerText = '';
+
+
+                displayStep(5);
             }
-            document.getElementById('result_title').innerText = 'Title : ' + result_query.Title;
-            document.getElementById('result_release').innerText = 'Release Date : ' + result_query.Released;
-            document.getElementById('result_director').innerText = 'Director : ' + result_query.Director;
-            document.getElementById('result_image').src = result_query.Poster;
+        }
+        else{
+            if(result_query.results !== undefined )
+            {
+                if(result_query.results.albummatches.album.length > 0)
+                {
+                    let res = result_query.results.albummatches.album[0];
+                    document.getElementById('result_title').innerText = 'Title : ' + res.name;
+                    document.getElementById('result_release').innerText = 'Release Date : N/A';
+                    document.getElementById('result_director').innerText = 'Artist : ' + res.artist;
+                    document.getElementById('result_image').src = res.image[3]["#text"];
+                    document.getElementById('result_plot').innerText = ''
 
-            document.getElementById('result_plot').innerText = 'Plot : ' + result_query.Plot;
+                    document.getElementById('messerror').innerText = '';
 
 
-            document.getElementById('result_plot').innerText ='Plot : '+ result_query.Plot;
-            document.getElementById('messerror').innerText = '';
+                    displayStep(5);
+                }
+                else
+                {
+                    document.getElementById('messerror').innerText = 'No album found';
 
+                }
+            }
+            else{
+                document.getElementById('messerror').innerText = 'An error occured';
 
-            displayStep(5);
+            }
         }
 
-    }
-    else
-    {
-        document.getElementById('messerror').innerText = 'Please enter a title';
+        } else {
+            document.getElementById('messerror').innerText = 'Please enter a title';
+        }
 
-    }
+
 });
 
 document.getElementById('popup_import_final_back').addEventListener('click', function () {
     displayStep(4);
 });
 document.getElementById('popup_import_final').addEventListener('click', function () {
-    addMedia(new Movie(result_query.Title + ' - IMDB', result_query.Director, result_query.Released, result_query.Poster, result_query.Plot, note));
+    if(film) {
+        addMedia(new Movie(result_query.Title + ' - IMDB', result_query.Director, result_query.Released, result_query.Poster, result_query.Plot, note));
+    }
+    else
+    {
+        addMedia(new Album(result_query.results.albummatches.album[0].name + " - LastFM", result_query.results.albummatches.album[0].artist, 'N/A', result_query.results.albummatches.album[0].image[3]["#text"], ''));
+    }
     togglePopup();
 
 

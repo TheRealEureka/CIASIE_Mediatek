@@ -143,10 +143,16 @@
       .import-step{
         .radio-form {
           text-align: left;
-
-          input {
-            padding: 5px;
+          label {
+            display: block;
+            font-weight: normal;
+            font-size: 15px;
+            margin: 0;
+            input {
+              padding: 5px;
+            }
           }
+
         }
         .result{
           display: flex;

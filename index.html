@@ -43,7 +43,7 @@
                     <option value="Albm">Album</option>
                 </select>
                 <button id="create">Create -></button>
-                <a href="#" id="go_to_import">Or import with IMdb</a>
+                <a href="#" id="go_to_import">Or import with IMdb / LastFM</a>
             </div>
             <div id="popup_step2" class="step middle-step hidden">
                 <p>Général</p>
@@ -71,14 +71,16 @@
                 </div>
             </div>
             <div id="popup_step4" class="step import-step hidden" >
-                <p>Import with IMDb</p>
+                <p>Import with APIs</p>
                 <label>Search by :</label>
                 <div class="radio-form">
-                    <label for="input_radio_title"> Title </label>
-                    <input id="input_radio_title" type="radio" name="radio_type" value="title" checked/>
-                    <label for="input_radio_id"> Id </label>
-                    <input id="input_radio_id" type="radio" name="radio_type" value="id" />
-                </div>
+                    <label for="input_radio_title"> Title (Film)
+                    <input id="input_radio_title" type="radio" name="radio_type" value="title" checked/></label>
+                    <label for="input_radio_id"> Id (Film)
+                    <input id="input_radio_id" type="radio" name="radio_type" value="id" /></label>
+                    <label for="input_radio_album"> Title (Album)
+                    <input id="input_radio_album" type="radio" name="radio_type" value="id" /></label>
+                    </div>
                 <label for="search">Search value : </label>
                 <input id="search" type="text" placeholder="Exemple : Avengers"><p class="error" id="messerror"></p>
                 <div class="popup_action_buttons">
@@ -126,8 +128,8 @@
         </div>
     </div>
     </div>
+    </div>
 
-</div>
 <p class="credits">Made by <a target="_blank" href="https://github.com/MaegIins">Tristan BELMONT</a> & <a target="_blank" href="https://github.com/TheRealEureka">Kevin BULLY CIMBALURIA</a>. </p>
 
 

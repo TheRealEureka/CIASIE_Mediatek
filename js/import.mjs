@@ -1,13 +1,26 @@
 const API_KEY = "c3d5654f";
 const API_URL = "https://www.omdbapi.com/?apikey=" + API_KEY;
-const POSTER_API_URL = "https://img.omdbapi.com/?apikey=" + API_KEY;
 
+const API_ALBUM_KEY = "8387fc6e24b7efac64fdff9a67fa82e8";
+const API_ALBUM_URL = "https://ws.audioscrobbler.com/2.0/?method=album.search";
 
 function sendRequest(parameters) {
     let options = {
         method: "GET"
     }
     return     fetch(API_URL+parameters, options)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            return data;
+        });
+}
+function sendRequestAlbum(parameters) {
+    let options = {
+        method: "GET"
+    }
+    return     fetch(API_ALBUM_URL+parameters, options)
         .then(response => {
             return response.json()
         })
@@ -22,5 +35,9 @@ export async function  getByID(id) {
 
 export async function  getByTitle(name) {
     return await sendRequest("&t="+name);
+}
+
+export async function  getAlbumByTitle(name) {
+    return await sendRequestAlbum("&album="+name+"&limit=1"+ "&api_key="+API_ALBUM_KEY+"&format=json");
 }
 

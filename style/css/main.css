@@ -230,7 +230,13 @@ button:hover {
 .popup .popup-content .form-add-media .import-step .radio-form {
   text-align: left;
 }
-.popup .popup-content .form-add-media .import-step .radio-form input {
+.popup .popup-content .form-add-media .import-step .radio-form label {
+  display: block;
+  font-weight: normal;
+  font-size: 15px;
+  margin: 0;
+}
+.popup .popup-content .form-add-media .import-step .radio-form label input {
   padding: 5px;
 }
 .popup .popup-content .form-add-media .import-step .result {

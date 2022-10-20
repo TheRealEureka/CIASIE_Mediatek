@@ -7,6 +7,8 @@ const API_ALBUM_URL = "https://ws.audioscrobbler.com/2.0/?method=album.search";
 const API_GAME_KEY = "5ab65f9574d9432999e006da7461936e";
 const API_GAME_URL = "https://api.rawg.io/api/games/";
 
+const API_BOOK_URL = "https://www.googleapis.com/books/v1/volumes";
+
 
 async function sendRequest(parameters) {
     let options = {
@@ -46,6 +48,18 @@ async function sendRequestGame(parameters) {
             return data;
         });
 }
+async function sendRequestBook(parameters) {
+    let options = {
+        method: "GET"
+    }
+    return  await   fetch(API_BOOK_URL+parameters, options)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            return data;
+        });
+}
 
 export async function  getByID(id) {
     return await sendRequest("&i="+id);
@@ -63,5 +77,9 @@ export async function  getGameByTitle(name) {
     name =name.toLowerCase().replace(/"|&|'|\||\s+/g, "-");
 
     return await sendRequestGame(name+"?key="+API_GAME_KEY);
+}
+export async function  getBookByTitle(name) {
+
+    return await sendRequestBook("?q="+name+"&maxResults=1");
 }
 

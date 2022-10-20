@@ -61,6 +61,7 @@ export async function  getAlbumByTitle(name) {
 }
 
 export async function  getGameByTitle(name) {
+    name =name.toLowerCase().replace(/"|&|'|\||\s+/g, "-");
     return await sendRequestGame(name+"?key="+API_GAME_KEY);
 }
 

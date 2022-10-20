@@ -89,16 +89,16 @@ function del(media) {
             let str = JSON.parse(data);
             str.forEach(function (media) {
                 if (media._type === "books") {
-                    tab.push(new Book(media._title, media._author, media._release, media._cover, media._description));
+                    tab.push(new Book(media._title, media._author, media._release, media._cover, media._description,media._notes));
                 }
                 if (media._type === 'movies') {
                     tab.push(new Movie(media._title, media._director, media._release, media._cover, media._description, media._notes));
                 }
                 if (media._type === "albums") {
-                    tab.push(new Album(media._title, media._artist, media._release, media._cover, media._description));
+                    tab.push(new Album(media._title, media._artist, media._release, media._cover, media._description,media._notes));
                 }
                 if (media._type === "games") {
-                    tab.push(new Game(media._title, media._editor, media._release, media._cover, media._description));
+                    tab.push(new Game(media._title, media._editor, media._release, media._cover, media._description,media._notes));
                 }
             });
         }

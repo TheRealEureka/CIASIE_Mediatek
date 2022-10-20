@@ -4,9 +4,9 @@ import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType, save} from "./mediaManager.mjs";
-import {getAlbumByTitle, getByID, getByTitle} from "./import.mjs";
+import {getAlbumByTitle, getByID, getByTitle,getGameByTitle} from "./import.mjs";
 
-
+console.log(await getGameByTitle("Minecraft"));
 let menu_item = document.getElementById('nav_items');
 
 let current_tab = "all";

@@ -1,8 +1,8 @@
 import {Media} from "./media.mjs";
 
 class Book extends Media {
-    constructor(title, author, releaseYear, cover="", desc= "") {
-        super(title, releaseYear, cover, desc);
+    constructor(title, author, releaseYear, cover="", desc= "", notes="") {
+        super(title, releaseYear, cover, desc, notes);
         this._author = author;
         this._type = "books";
     }

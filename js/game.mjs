@@ -1,8 +1,8 @@
 import {Media} from "./media.mjs";
 
 class Game extends Media {
-    constructor(title, editor, releaseYear, cover, desc="") {
-        super(title, releaseYear, cover, desc);
+    constructor(title, editor, releaseYear, cover, desc="", notes="") {
+        super(title, releaseYear, cover, desc, notes);
         this._editor = editor;
         this._type = "games";
     }

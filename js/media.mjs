@@ -1,5 +1,5 @@
 class Media {
-    constructor(title, release, cover, desc ="") {
+    constructor(title, release, cover, desc = "", rating = "") {
         this._title = title;
         this._description = desc;
 
@@ -12,14 +12,19 @@ class Media {
         } else {
             this._cover = 'style/icon/nopic.svg';
         }
-        if(title.toLowerCase() === "monkey")
-        {
+        if (title.toLowerCase() === "monkey") {
             this._cover = 'https://media.tenor.com/7hd53a2Fg30AAAAC/monkey-dancing.gif';
         }
-        if(title.toLowerCase() === "fish"){
+        if (title.toLowerCase() === "fish") {
             this._cover = 'https://media.tenor.com/vKFRkomSlS4AAAAC/puffer-fish.gif';
         }
         this._release = release;
+
+        if (rating === "") {
+            this._note = "Not rated";
+        } else {
+            this._note = rating;
+        }
     }
 
     get title() {
@@ -33,8 +38,13 @@ class Media {
     get release() {
         return this._release;
     }
+
     get description() {
         return this._description;
+    }
+
+    get note() {
+        return this._note;
     }
 
 }

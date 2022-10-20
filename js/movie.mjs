@@ -1,11 +1,10 @@
 import {Media} from "./media.mjs";
 
 class Movie extends Media {
-    constructor(title, director, releaseYear, cover, desc = "", notes = "N/A") {
-        super(title, releaseYear, cover, desc);
+    constructor(title, director, releaseYear, cover, desc = "", notes = "") {
+        super(title, releaseYear, cover, desc, notes);
         this._director = director;
         this._type = "movies";
-        this._notes = notes;
     }
 
     get director() {
@@ -15,9 +14,7 @@ class Movie extends Media {
     get type(){
         return this._type;
     }
-    get notes() {
-        return this._notes;
-    }
+
      html(){
         let obj = document.createElement("div");
         obj.classList.add("card");

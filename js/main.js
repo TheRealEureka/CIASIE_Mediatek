@@ -322,9 +322,8 @@ document.getElementById('popup_import').addEventListener('click', async function
                     }
                     resultdata['custom'] = devs;
                     resultdata['custom_field'] = "Author";
-
-                    if (result_query.averageRating !== undefined) {
-                        note = result_query.averageRating;
+                    if (res.volumeInfo.averageRating !== undefined) {
+                        note = res.volumeInfo.averageRating;
                         if (note > 4.8) {
                             note = "⭐⭐⭐⭐⭐";
                         } else if (note > 3.8) {

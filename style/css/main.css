@@ -254,7 +254,7 @@ button:hover {
   font-weight: normal;
   border: none;
 }
-.popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button, .popup .popup-content .form-add-media .edit-step select, .popup .popup-content .form-add-media .edit-step button {
+.popup .popup-content .form-add-media .first-step select, .popup .popup-content .form-add-media .first-step button, .popup .popup-content .form-add-media .last-step select, .popup .popup-content .form-add-media .last-step button, .popup .popup-content .form-add-media .edit-step select, .popup .popup-content .form-add-media .edit-step button, .popup .popup-content .form-add-media .import-step select, .popup .popup-content .form-add-media .import-step button {
   padding: 10px 20px;
 }
 .popup .popup-content .form-add-media .middle-step p, .popup .popup-content .form-add-media .last-step p, .popup .popup-content .form-add-media .import-step p, .popup .popup-content .form-add-media .edit-step p {

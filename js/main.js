@@ -155,7 +155,6 @@ document.getElementById("apiTypeSelect").addEventListener('change', function () 
     document.getElementById("radioMovie").classList.add("hidden");
     document.getElementById("radioAlbum").classList.add("hidden");
 
-
     if (this.value === "input_radio_title") {
         document.getElementById("radioMovie").classList.toggle("hidden");
         document.getElementById("input_radio_title").checked=true;
@@ -168,16 +167,32 @@ document.getElementById("apiTypeSelect").addEventListener('change', function () 
 document.getElementById('popup_import').addEventListener('click', async function () {
     let radio = [document.getElementById("input_radio_id"), document.getElementById("input_radio_title"), document.getElementById("input_radio_album")];
     let search = document.getElementById("search");
+    let succes= false;
     let regex = new RegExp('^\s*$');
+    let resultdata = {
+        "title": "",
+        "release" : "",
+        "cover" : "",
+        "plot" : "",
+        "custom" : ""
+    }
+
     if (!regex.test(search.value)) {
         if (radio[0].checked) {
+            film=true;
             result_query = await getByID(search.value);
         } else if (radio[1].checked) {
+            film=true;
             result_query = await getByTitle(search.value);
-        } else {
-            result_query = await getAlbumByTitle(search.value);
+        } else if (document.getElementById("apiTypeSelect").value==="input_radio_album") {
             film = false;
+            result_query = await getAlbumByTitle(search.value);
         }
+        else {
+            return;
+        }
+
+
         if (film) {
 
             if (result_query.Response === "False") {
@@ -186,11 +201,15 @@ document.getElementById('popup_import').addEventListener('click', async function
             } else {
                 document.getElementById('search').style.border = "black 2px solid";
 
+                resultdata['title'] = result_query.Title;
+                resultdata['release'] = result_query.Released;
+                resultdata['cover'] = result_query.Poster;
+                resultdata['plot'] = result_query.Plot;
+                resultdata['custom'] = "Director :"+result_query.Director;
 
                 if (result_query.Ratings[0] !== undefined) {
                     note = result_query.Ratings[0].Value;
                     note = note.split("/")[0]
-                    console.log(note);
                     if (note === "N/A") {
                         note = 'N/A';
                     } else {
@@ -209,17 +228,11 @@ document.getElementById('popup_import').addEventListener('click', async function
                         }
                     }
                 }
-                document.getElementById('result_title').innerText = 'Title : ' + result_query.Title;
-                document.getElementById('result_release').innerText = 'Release Date : ' + result_query.Released;
-                document.getElementById('result_director').innerText = 'Director : ' + result_query.Director;
-                document.getElementById('result_image').src = result_query.Poster;
 
-                document.getElementById('result_plot').innerText = 'Plot : ' + result_query.Plot;
 
 
                 document.getElementById('messerror').innerText = '';
-
-
+                succes=true;
                 displayStep(5);
             }
         }
@@ -229,15 +242,15 @@ document.getElementById('popup_import').addEventListener('click', async function
                 if(result_query.results.albummatches.album.length > 0)
                 {
                     let res = result_query.results.albummatches.album[0];
-                    document.getElementById('result_title').innerText = 'Title : ' + res.name;
-                    document.getElementById('result_release').innerText = 'Release Date : N/A';
-                    document.getElementById('result_director').innerText = 'Artist : ' + res.artist;
-                    document.getElementById('result_image').src = res.image[3]["#text"];
-                    document.getElementById('result_plot').innerText = ''
+                    resultdata['title'] = res.name;
+                    resultdata['release'] = 'N/A';
+                    resultdata['cover'] = res.image[3]["#text"];
+                    resultdata['plot'] = '';
+                    resultdata['custom'] = 'Artist : ' + res.artist;
 
                     document.getElementById('messerror').innerText = '';
 
-
+                    succes = true;
                     displayStep(5);
                 }
                 else
@@ -246,15 +259,23 @@ document.getElementById('popup_import').addEventListener('click', async function
 
                 }
             }
-            else{
-                document.getElementById('messerror').innerText = 'An error occured';
 
-            }
         }
 
         } else {
             document.getElementById('messerror').innerText = 'Please enter a title';
         }
+    if(succes){
+
+        document.getElementById('result_title').innerText = 'Title : ' + resultdata.title;
+        document.getElementById('result_release').innerText = 'Release Date : ' + resultdata.release;
+        document.getElementById('result_director').innerText = resultdata.custom;
+        document.getElementById('result_image').src = resultdata.cover;
+        document.getElementById('result_plot').innerText = resultdata.plot;
+    }    else{
+        document.getElementById('messerror').innerText = 'An error occured';
+    }
+
 
 
 });

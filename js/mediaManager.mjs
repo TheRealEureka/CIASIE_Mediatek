@@ -16,7 +16,7 @@ export function addMedia(media) {
 }
 
 function display(type ="all", sort = "title") {
-    console.log(tab);
+
     switch (sort){
         case "date":
              tab.sort(function (a, b) {
@@ -87,7 +87,6 @@ function del(media) {
         let data = localStorage.getItem("media");
         if (data !== null) {
             let str = JSON.parse(data);
-            console.log(str)
             str.forEach(function (media) {
                 if (media._type === "books") {
                     tab.push(new Book(media._title, media._author, media._release, media._cover, media._description));

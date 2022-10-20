@@ -23,8 +23,9 @@ for (let child of menu_item.children) {
 }
 
 //Select tab
-function select(tab) {
+export function select(tab) {
     current_tab = tab;
+    document.getElementById("sort").value = "title";
     displayByType(tab);
 }
 

@@ -36,8 +36,7 @@ async function sendRequestAlbum(parameters) {
 async function sendRequestGame(parameters) {
     let options = {
         method: "GET",
-        mode: 'no-cors'
-
+        mode: 'cors'
     }
     return  await   fetch(API_GAME_URL+parameters, options)
         .then(response => {
@@ -62,6 +61,7 @@ export async function  getAlbumByTitle(name) {
 
 export async function  getGameByTitle(name) {
     name =name.toLowerCase().replace(/"|&|'|\||\s+/g, "-");
+
     return await sendRequestGame(name+"?key="+API_GAME_KEY);
 }
 

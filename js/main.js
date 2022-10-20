@@ -158,15 +158,10 @@ let resultdata = {
 }
 document.getElementById("apiTypeSelect").addEventListener('change', function () {
     document.getElementById("radioMovie").classList.add("hidden");
-    document.getElementById("radioAlbum").classList.add("hidden");
-    document.getElementById("radioGame").classList.add("hidden");
+    
 
     if (this.value === "input_radio_title") {
         document.getElementById("radioMovie").classList.toggle("hidden");
-    } else if (this.value === "input_radio_album") {
-        document.getElementById("radioAlbum").classList.toggle("hidden");
-    } else if (this.value === "input_radio_game") {
-        document.getElementById("radioGame").classList.toggle("hidden");
     }
 
 });

@@ -23,7 +23,7 @@ class Game extends Media {
                     <div class="card-content">
                         <h4><span class="icon icon-game"></span> ${this.title}</h4>
                         <small>Released ${this.release}</small>
-                        <small>${this._editor}</small>
+                        <small>${this._editor} - ${this._note}</small>
                         <p>${this.description}</p>
 
                     </div>

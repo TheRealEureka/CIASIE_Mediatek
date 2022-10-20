@@ -24,7 +24,7 @@ class Movie extends Media {
                     <div class="card-content">
                         <h4><span class="icon icon-movie"></span> ${this.title}</h4>
                         <small>Released ${this.release}</small>
-                        <small>${this._director} - ${this._notes}</small>
+                        <small>${this._director} - ${this._note}</small>
                         <p>${this.description}</p>
                     </div>
                     <div class="actions">

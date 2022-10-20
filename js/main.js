@@ -246,6 +246,7 @@ document.getElementById('popup_import').addEventListener('click', async function
                     resultdata['custom_field'] = "Artist";
 
 
+
                     succes = true;
                 } else {
                     error.innerText = 'No album found';
@@ -260,6 +261,24 @@ document.getElementById('popup_import').addEventListener('click', async function
                 resultdata['release'] = result_query.released;
                 resultdata['cover'] = result_query.background_image;
                 let desc = result_query.description_raw.split(".");
+
+                if (result_query.metacritic !== undefined) {
+                    note = result_query.metacritic;
+                    if (note > 90) {
+                        note = "⭐⭐⭐⭐⭐";
+                    } else if (note > 70) {
+                        note = "⭐⭐⭐⭐★";
+                    } else if (note > 50) {
+                        note = "⭐⭐⭐★★";
+                    } else if (note > 30) {
+                        note = "⭐⭐★★★";
+                    } else if (note > 10) {
+                        note = "⭐★★★★";
+                    } else {
+                        note = "★★★★★";
+                    }
+                }
+
 
                 if (desc.length > 1) {
                     desc = desc[0] + "." + desc[1] + ".";
@@ -303,6 +322,23 @@ document.getElementById('popup_import').addEventListener('click', async function
                     }
                     resultdata['custom'] = devs;
                     resultdata['custom_field'] = "Author";
+
+                    if (result_query.averageRating !== undefined) {
+                        note = result_query.averageRating;
+                        if (note > 4.8) {
+                            note = "⭐⭐⭐⭐⭐";
+                        } else if (note > 3.8) {
+                            note = "⭐⭐⭐⭐★";
+                        } else if (note > 2.5) {
+                            note = "⭐⭐⭐★★";
+                        } else if (note > 1.5) {
+                            note = "⭐⭐★★★";
+                        } else if (note > 0.5) {
+                            note = "⭐★★★★";
+                        } else {
+                            note = "★★★★★";
+                        }
+                    }
 
                     succes = true;
 
@@ -351,9 +387,9 @@ document.getElementById('popup_import').addEventListener('click', async function
         } else if (type === 'album') {
             addMedia(new Album(resultdata.title + " - LastFM", resultdata.custom, 'N/A', resultdata.cover, ''));
         } else if (type === 'game') {
-            addMedia(new Game(resultdata.title + " - IGDB", resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot));
+            addMedia(new Game(resultdata.title + " - IGDB", resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot, note));
         }else if (type === 'book') {
-            addMedia(new Book(resultdata.title + " - GoogleAPI", resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot));
+            addMedia(new Book(resultdata.title + " - GoogleAPI", resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot, note));
         }
         togglePopup();
 

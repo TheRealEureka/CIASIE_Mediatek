@@ -108,12 +108,12 @@ document.getElementById('popup_final').addEventListener('click', function () {
 
 
 //Generate specific form for each media type
-let type = document.getElementById("med");
-type.addEventListener('change', function () {
+let med = document.getElementById("med");
+med.addEventListener('change', function () {
 
     let label = "Author :";
 
-    switch (type.value) {
+    switch (med.value) {
         case "Boo":
             label = "Author :";
             break;
@@ -147,20 +147,29 @@ document.getElementById('popup_back').addEventListener('click', function () {
     displayStep(1);
 });
 let note;
-let result_query = {};
-let film = true;
-
+let type = 'film';
+let resultdata = {
+    "title": "",
+    "release" : "",
+    "cover" : "",
+    "plot" : "",
+    "custom" : "",
+    "custom_field" : ""
+}
 document.getElementById("apiTypeSelect").addEventListener('change', function () {
     document.getElementById("radioMovie").classList.add("hidden");
     document.getElementById("radioAlbum").classList.add("hidden");
+    document.getElementById("radioGame").classList.add("hidden");
 
     if (this.value === "input_radio_title") {
         document.getElementById("radioMovie").classList.toggle("hidden");
-        document.getElementById("input_radio_title").checked=true;
-    } else { if (this.value === "input_radio_album") {
+    } else if (this.value === "input_radio_album") {
         document.getElementById("radioAlbum").classList.toggle("hidden");
-        document.getElementById("input_radio_artist").checked=true;
-    }}
+    }
+    else if (this.value === "input_radio_game") {
+        document.getElementById("radioGame").classList.toggle("hidden");
+    }
+
 });
 
 document.getElementById('popup_import').addEventListener('click', async function () {
@@ -168,31 +177,29 @@ document.getElementById('popup_import').addEventListener('click', async function
     let search = document.getElementById("search");
     let succes= false;
     let regex = new RegExp('^\s*$');
-    let resultdata = {
-        "title": "",
-        "release" : "",
-        "cover" : "",
-        "plot" : "",
-        "custom" : ""
-    }
+    let result_query = {};
+
 
     if (!regex.test(search.value)) {
-        if (radio[0].checked) {
-            film=true;
+        if (radio[0].checked && document.getElementById("apiTypeSelect").value==="input_radio_title") {
+            type='film';
             result_query = await getByID(search.value);
-        } else if (radio[1].checked) {
-            film=true;
+        } else if (radio[1].checked && document.getElementById("apiTypeSelect").value==="input_radio_title") {
+            type='film';
             result_query = await getByTitle(search.value);
         } else if (document.getElementById("apiTypeSelect").value==="input_radio_album") {
-            film = false;
+            type = 'album';
             result_query = await getAlbumByTitle(search.value);
+        } else if (document.getElementById("apiTypeSelect").value==="input_radio_game") {
+            type = 'game';
+            result_query = await getGameByTitle(search.value);
         }
         else {
             return;
         }
 
 
-        if (film) {
+        if (type === "film") {
 
             if (result_query.Response === "False") {
                 document.getElementById('search').style.border = "red 2px solid";
@@ -204,7 +211,8 @@ document.getElementById('popup_import').addEventListener('click', async function
                 resultdata['release'] = result_query.Released;
                 resultdata['cover'] = result_query.Poster;
                 resultdata['plot'] = result_query.Plot;
-                resultdata['custom'] = "Director :"+result_query.Director;
+                resultdata['custom'] = result_query.Director;
+                resultdata['custom_field'] = "Director";
 
                 if (result_query.Ratings[0] !== undefined) {
                     note = result_query.Ratings[0].Value;
@@ -230,12 +238,10 @@ document.getElementById('popup_import').addEventListener('click', async function
 
 
 
-                document.getElementById('messerror').innerText = '';
                 succes=true;
-                displayStep(5);
             }
         }
-        else{
+        else if (type==='album'){
             if(result_query.results !== undefined )
             {
                 if(result_query.results.albummatches.album.length > 0)
@@ -245,12 +251,12 @@ document.getElementById('popup_import').addEventListener('click', async function
                     resultdata['release'] = 'N/A';
                     resultdata['cover'] = res.image[3]["#text"];
                     resultdata['plot'] = '';
-                    resultdata['custom'] = 'Artist : ' + res.artist;
+                    resultdata['custom'] = res.artist;
+                    resultdata['custom_field'] = "Artist";
 
-                    document.getElementById('messerror').innerText = '';
+
 
                     succes = true;
-                    displayStep(5);
                 }
                 else
                 {
@@ -259,6 +265,42 @@ document.getElementById('popup_import').addEventListener('click', async function
                 }
             }
 
+        } else if (type==='game')
+        {
+            if(result_query.detail === undefined )
+            {
+                console.log(result_query);
+                resultdata['title'] = result_query.name;
+                resultdata['release'] = result_query.released;
+                resultdata['cover'] = result_query.background_image;
+                let desc = result_query.description_raw.split(".");
+
+                if(desc.length >1){
+                    desc = desc[0] +"." + desc[1] + ".";
+                }else if (desc.length > 0)
+                {
+                    desc = desc[0]+".";
+                }
+                resultdata['plot'] = desc ;
+                let devs = "";
+                let dev = result_query.developers;
+                for(let i = 0 ; i < dev.length;i++)
+                {
+                    devs += dev[i].name;
+                    if(i !== dev.length-1)
+                    {
+                        devs += ", ";
+                    }
+                }
+                resultdata['custom'] = devs;
+                resultdata['custom_field'] = "Editor";
+                succes=true;
+            }
+            else
+            {
+                document.getElementById('messerror').innerText = 'No game found';
+
+            }
         }
 
         } else {
@@ -268,9 +310,22 @@ document.getElementById('popup_import').addEventListener('click', async function
 
         document.getElementById('result_title').innerText = 'Title : ' + resultdata.title;
         document.getElementById('result_release').innerText = 'Release Date : ' + resultdata.release;
-        document.getElementById('result_director').innerText = resultdata.custom;
+        document.getElementById('result_director').innerText = resultdata.custom_field + " : " +resultdata.custom;
         document.getElementById('result_image').src = resultdata.cover;
-        document.getElementById('result_plot').innerText = resultdata.plot;
+        if(resultdata.plot === undefined || resultdata.plot ==="N/A"  || resultdata.plot==="")
+        {
+            document.getElementById('result_plot').innerText = "";
+
+        }
+        else
+        {
+            document.getElementById('result_plot').innerText = "Plot : "+resultdata.plot;
+
+        }
+        document.getElementById('messerror').innerText = '';
+        displayStep(5);
+
+
     }    else{
         document.getElementById('messerror').innerText = 'An error occured';
     }
@@ -283,12 +338,16 @@ document.getElementById('popup_import_final_back').addEventListener('click', fun
     displayStep(4);
 });
 document.getElementById('popup_import_final').addEventListener('click', function () {
-    if(film) {
-        addMedia(new Movie(result_query.Title + ' - IMDB', result_query.Director, result_query.Released, result_query.Poster, result_query.Plot, note));
+    if(type === 'film') {
+        addMedia(new Movie(resultdata.title + ' - IMDB', resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot, note));
     }
-    else
+    else if (type === 'album')
     {
-        addMedia(new Album(result_query.results.albummatches.album[0].name + " - LastFM", result_query.results.albummatches.album[0].artist, 'N/A', result_query.results.albummatches.album[0].image[3]["#text"], ''));
+        addMedia(new Album(resultdata.title + " - LastFM", resultdata.custom, 'N/A', resultdata.cover, ''));
+    }
+    else if (type === 'game')
+    {
+        addMedia(new Game(resultdata.title + " - IGDB", resultdata.custom, resultdata.release, resultdata.cover, resultdata.plot));
     }
     togglePopup();
 

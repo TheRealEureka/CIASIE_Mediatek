@@ -43,7 +43,7 @@
                     <option value="Albm">Album</option>
                 </select>
                 <button id="create">Create -></button>
-                <a href="#" id="go_to_import">Or import with IMdb / LastFM</a>
+                <a href="#" id="go_to_import">Or import with APIs</a>
             </div>
             <div id="popup_step2" class="step middle-step hidden">
                 <p>Général</p>
@@ -74,8 +74,9 @@
                 <p>Import with APIs</p>
                 <label for="apiTypeSelect">Search by :</label>
                 <select id='apiTypeSelect' class="selectionType">
-                    <option value="input_radio_title">Movie</option>
-                    <option value="input_radio_album">Album</option>
+                    <option value="input_radio_title">Movie (IMDB) </option>
+                    <option value="input_radio_album">Album (LastFM)</option>
+                    <option value="input_radio_game">Game (IGDB)</option>
                 </select>
                 <div class="radio-form" id="radioMovie">
                     <label for="input_radio_title">Title
@@ -84,9 +85,14 @@
                     <input type="radio" id="input_radio_id" name="apiType" value="album"></label>
                 </div>
                 <div class="radio-form hidden" id="radioAlbum">
-                    <label for="input_radio_artist">Title
-                    <input type="radio" id="input_radio_artist" name="apiType" value="artist" ></label>
+                    <label for="input_radio_album">Title
+                    <input type="radio" id="input_radio_album" name="apiType2" value="artist" checked></label>
                 </div>
+                <div class="radio-form hidden" id="radioGame">
+                    <label for="input_radio_game">Title
+                    <input type="radio" id="input_radio_game" name="apiType3" value="artist" checked></label>
+                </div>
+
                 <div id="checkboxesAPI"></div>
                 <label for="search">Search value : </label>
                 <input id="search" type="text" placeholder="Exemple : Avengers"><p class="error" id="messerror"></p>

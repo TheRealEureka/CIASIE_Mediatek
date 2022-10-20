@@ -79,26 +79,29 @@ function del(media) {
 
 //Save the list into local storage
    export function save() {
+    console.log(tab);
         localStorage.setItem("media", JSON.stringify(tab));
     }
 
 //Get the list from local storage
     function get() {
         let data = localStorage.getItem("media");
+
         if (data !== null) {
             let str = JSON.parse(data);
+            console.log(str);
             str.forEach(function (media) {
                 if (media._type === "books") {
-                    tab.push(new Book(media._title, media._author, media._release, media._cover, media._description,media._notes));
+                    tab.push(new Book(media._title, media._author, media._release, media._cover, media._description, media._note));
                 }
                 if (media._type === 'movies') {
-                    tab.push(new Movie(media._title, media._director, media._release, media._cover, media._description, media._notes));
+                    tab.push(new Movie(media._title, media._director, media._release, media._cover, media._description, media._note));
                 }
                 if (media._type === "albums") {
-                    tab.push(new Album(media._title, media._artist, media._release, media._cover, media._description,media._notes));
+                    tab.push(new Album(media._title, media._artist, media._release, media._cover, media._description,media._note));
                 }
                 if (media._type === "games") {
-                    tab.push(new Game(media._title, media._editor, media._release, media._cover, media._description,media._notes));
+                    tab.push(new Game(media._title, media._editor, media._release, media._cover, media._description,media._note));
                 }
             });
         }

@@ -79,7 +79,6 @@ function del(media) {
 
 //Save the list into local storage
    export function save() {
-    console.log(tab);
         localStorage.setItem("media", JSON.stringify(tab));
     }
 
@@ -89,7 +88,6 @@ function del(media) {
 
         if (data !== null) {
             let str = JSON.parse(data);
-            console.log(str);
             str.forEach(function (media) {
                 if (media._type === "books") {
                     tab.push(new Book(media._title, media._author, media._release, media._cover, media._description, media._note));

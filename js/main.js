@@ -315,7 +315,7 @@ document.getElementById('popup_import').addEventListener('click', async function
                     let dev = res.volumeInfo.authors;
                     let devs = "";
                     for (let i = 0; i < dev.length; i++) {
-                        devs += dev[i].name;
+                        devs += dev[i];
                         if (i !== dev.length - 1) {
                             devs += ", ";
                         }

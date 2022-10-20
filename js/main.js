@@ -151,6 +151,20 @@ let note;
 let result_query = {};
 let film = true;
 
+document.getElementById("apiTypeSelect").addEventListener('change', function () {
+    document.getElementById("radioMovie").classList.add("hidden");
+    document.getElementById("radioAlbum").classList.add("hidden");
+
+
+    if (this.value === "input_radio_title") {
+        document.getElementById("radioMovie").classList.toggle("hidden");
+        document.getElementById("input_radio_title").checked=true;
+    } else { if (this.value === "input_radio_album") {
+        document.getElementById("radioAlbum").classList.toggle("hidden");
+        document.getElementById("input_radio_artist").checked=true;
+    }}
+});
+
 document.getElementById('popup_import').addEventListener('click', async function () {
     let radio = [document.getElementById("input_radio_id"), document.getElementById("input_radio_title"), document.getElementById("input_radio_album")];
     let search = document.getElementById("search");

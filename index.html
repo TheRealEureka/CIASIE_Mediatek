@@ -73,14 +73,21 @@
             <div id="popup_step4" class="step import-step hidden" >
                 <p>Import with APIs</p>
                 <label>Search by :</label>
-                <div class="radio-form">
-                    <label for="input_radio_title"> Title (Film)
-                    <input id="input_radio_title" type="radio" name="radio_type" value="title" checked/></label>
-                    <label for="input_radio_id"> Id (Film)
-                    <input id="input_radio_id" type="radio" name="radio_type" value="id" /></label>
-                    <label for="input_radio_album"> Title (Album)
-                    <input id="input_radio_album" type="radio" name="radio_type" value="id" /></label>
-                    </div>
+                <select id='apiTypeSelect' class="selectionType">
+                    <option value="input_radio_title">Movie</option>
+                    <option value="input_radio_album">Album</option>
+                </select>
+                <div class="radioMovie" id="radioMovie">
+                    <input type="radio" id="input_radio_title" name="apiType" value="title" checked>
+                    <label for="input_radio_title">Title</label>
+                    <input type="radio" id="input_radio_id" name="apiType" value="album">
+                    <label for="input_radio_id">ID</label>
+                </div>
+                <div class="radioAlbum hidden" id="radioAlbum">
+                    <input type="radio" id="input_radio_artist" name="apiType" value="artist" >
+                    <label for="input_radio_artist">Title</label>
+                </div>
+                <div id="checkboxesAPI"></div>
                 <label for="search">Search value : </label>
                 <input id="search" type="text" placeholder="Exemple : Avengers"><p class="error" id="messerror"></p>
                 <div class="popup_action_buttons">

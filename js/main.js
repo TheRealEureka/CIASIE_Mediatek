@@ -158,8 +158,6 @@ let resultdata = {
 }
 document.getElementById("apiTypeSelect").addEventListener('change', function () {
     document.getElementById("radioMovie").classList.add("hidden");
-    
-
     if (this.value === "input_radio_title") {
         document.getElementById("radioMovie").classList.toggle("hidden");
     }
@@ -172,6 +170,7 @@ document.getElementById('popup_import').addEventListener('click', async function
     let succes = false;
     let regex = new RegExp('^\s*$');
     let result_query = {};
+    let error =  document.getElementById("messerror");
 
 
     if (!regex.test(search.value)) {
@@ -199,7 +198,7 @@ document.getElementById('popup_import').addEventListener('click', async function
 
             if (result_query.Response === "False") {
                 document.getElementById('search').style.border = "red 2px solid";
-                document.getElementById('messerror').innerText = 'No movie found';
+                error.innerText = 'No movie found';
             } else {
                 document.getElementById('search').style.border = "black 2px solid";
 
@@ -249,7 +248,7 @@ document.getElementById('popup_import').addEventListener('click', async function
 
                     succes = true;
                 } else {
-                    document.getElementById('messerror').innerText = 'No album found';
+                    error.innerText = 'No album found';
 
                 }
             }
@@ -280,7 +279,7 @@ document.getElementById('popup_import').addEventListener('click', async function
                 resultdata['custom_field'] = "Editor";
                 succes = true;
             } else {
-                document.getElementById('messerror').innerText = 'No game found';
+                error.innerText = 'No game found';
 
             }
         } else if (type === 'book') {
@@ -294,13 +293,21 @@ document.getElementById('popup_import').addEventListener('click', async function
                         resultdata['cover'] = 'style/icon/nopic.svg';
                     }
                     resultdata['plot'] = res.volumeInfo.description;
-                    resultdata['custom'] = res.volumeInfo.authors[0];
+                    let dev = res.volumeInfo.authors;
+                    let devs = "";
+                    for (let i = 0; i < dev.length; i++) {
+                        devs += dev[i].name;
+                        if (i !== dev.length - 1) {
+                            devs += ", ";
+                        }
+                    }
+                    resultdata['custom'] = devs;
                     resultdata['custom_field'] = "Author";
 
                     succes = true;
 
                 } else {
-                    document.getElementById('messerror').innerText = 'Please enter a title';
+                    error.innerText = 'Please enter a title';
                 }
             }
         }
@@ -318,18 +325,22 @@ document.getElementById('popup_import').addEventListener('click', async function
                 document.getElementById('result_plot').innerText = "Plot : " + resultdata.plot;
 
             }
-            document.getElementById('messerror').innerText = '';
+            error.innerText = '';
             displayStep(5);
 
 
         } else {
-            document.getElementById('messerror').innerText = 'An error occured';
+            if(error.innerText === '')
+            {
+                error.innerText = 'An error occured';
+
+            }
         }
 
 
     }
-)
-    ;
+);
+
 
     document.getElementById('popup_import_final_back').addEventListener('click', function () {
         displayStep(4);
@@ -445,7 +456,7 @@ document.getElementById('popup_import').addEventListener('click', async function
         document.getElementById('search').value = "";
         document.getElementById('description').value = "";
         document.getElementById('description').value = "";
-        document.getElementById('messerror').innerText = '';
+        document.getElementById("messerror").innerText = '';
         document.getElementById('messerror_create').innerText = '';
         document.getElementById("messerror_edit").innerText = "";
 

@@ -4,9 +4,11 @@ import {Movie} from "./movie.mjs";
 import {Album} from "./album.mjs";
 import {Game} from "./game.mjs";
 import {addMedia, displayByType, save} from "./mediaManager.mjs";
-import {getAlbumByTitle, getBookByTitle, getByID, getByTitle, getGameByTitle} from "./import.mjs";
+import {checkImage, getAlbumByTitle, getBookByTitle, getByID, getByTitle, getGameByTitle} from "./import.mjs";
 
 let menu_item = document.getElementById('nav_items');
+
+
 
 let current_tab = "all";
 
@@ -352,7 +354,12 @@ document.getElementById('popup_import').addEventListener('click', async function
             document.getElementById('result_title').innerText = 'Title : ' + resultdata.title;
             document.getElementById('result_release').innerText = 'Release Date : ' + resultdata.release;
             document.getElementById('result_director').innerText = resultdata.custom_field + " : " + resultdata.custom;
-            document.getElementById('result_image').src = resultdata.cover;
+            if(await checkImage(resultdata.cover) === 200){
+                document.getElementById('result_image').src = resultdata.cover;
+            }
+            else{
+                document.getElementById('result_image').src = 'style/icon/nopic.svg';
+            }
             if (resultdata.plot === undefined || resultdata.plot === "N/A" || resultdata.plot === "") {
                 document.getElementById('result_plot').innerText = "";
 
@@ -437,7 +444,7 @@ document.getElementById('popup_import').addEventListener('click', async function
 
         }
 
-        cover.value = media.cover;
+        cover.value = media._cover;
         desc.value = media.description;
         spec.value = spec_atr;
     }

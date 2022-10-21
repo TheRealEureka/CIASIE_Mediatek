@@ -89,3 +89,15 @@ export async function  getBookByTitle(name) {
     return await sendRequestBook("?q="+name+"&maxResults=1");
 }
 
+export async function checkImage(url) {
+    let options = {
+        method: "GET"
+    }
+    return await fetch(url, options)
+        .then(response => {
+            return response.status;
+        })
+        .then(data => {
+            return data;
+        });
+}

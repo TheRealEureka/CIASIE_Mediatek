@@ -1,4 +1,4 @@
-# JS_Projet_2022
+# Mediatek
 LP CIASIE - Projet JavaScript (année universitaire 2022-2023)
 
 ## **The Monkeys Master**
